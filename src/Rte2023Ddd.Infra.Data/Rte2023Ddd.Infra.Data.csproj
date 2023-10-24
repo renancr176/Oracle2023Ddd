@@ -33,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contexts\TmsDb\Mappings\" />
     <Folder Include="Contexts\TmsDb\Migrations\" />
     <Folder Include="Contexts\TmsDb\Repositories\" />
     <Folder Include="Contexts\TmsDb\Seeders\Interfaces\" />

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Rte2023Ddd.Domain.Core.Data;
 using Rte2023Ddd.Domain.Core.Messages;
+using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
 
 namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb; 
 
@@ -41,7 +42,12 @@ public class TmsDbContext : DbContext, IUnitOfWork
 
         builder.Ignore<Event>();
 
+        builder.AddSequences();
+
         #region Mappings
+
+        builder.ApplyConfiguration(new AddressMapping());
+            //.UseKeySequences(AddressMapping._schema, AddressMapping._sequenceName);
 
         #endregion
     }

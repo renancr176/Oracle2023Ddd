@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Oracle.ManagedDataAccess.Client;
 
 namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb;
 
@@ -10,6 +11,8 @@ public static class TmsDb
     {
         services.AddDbContext<TmsDbContext>(dbContextOptions =>
             dbContextOptions.UseOracle(configuration.GetConnectionString("TMS")));
+
+        //OracleConfiguration.TnsAdmin = @"J:\TNSNAMES";
 
         #region Repositories
 
