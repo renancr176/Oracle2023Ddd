@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Azure;
 
 namespace Rte2023Ddd.Application.AutoMapper;
 

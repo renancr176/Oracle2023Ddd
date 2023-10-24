@@ -1,20 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Localization;
+﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using Rte2023Ddd.Domain.Core.Enums;
-using Rte2023Ddd.Domain.Core.Options;
 using Rte2023Ddd.Services.Api.Filters;
 using Rte2023Ddd.Services.Api.Middlewares;
-using System.ComponentModel;
-using System.Globalization;
 using System.Reflection;
 using System.Text.Json.Serialization;
-using Rte2023Ddd.Domain.Core.Extensions;
 using Rte2023Ddd.Infra.CrossCutting.IoC;
 
 namespace Rte2023Ddd.Services.Api;
@@ -141,7 +133,7 @@ public class Startup : IStartup
         //.AddEntityFrameworkStores<IdentityDbContext>()
         //.AddDefaultTokenProviders();
 
-        var appSettingJwtTokenOptions = Configuration.GetSection(JwtTokenOptions.sectionKey).Get<JwtTokenOptions>();
+        //var appSettingJwtTokenOptions = Configuration.GetSection(JwtTokenOptions.sectionKey).Get<JwtTokenOptions>();
 
         //services.AddAuthentication(options =>
         //{

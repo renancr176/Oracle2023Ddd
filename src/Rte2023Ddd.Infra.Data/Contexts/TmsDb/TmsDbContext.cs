@@ -46,8 +46,8 @@ public class TmsDbContext : DbContext, IUnitOfWork
 
         #region Mappings
 
-        builder.ApplyConfiguration(new AddressMapping());
-            //.UseKeySequences(AddressMapping._schema, AddressMapping._sequenceName);
+        builder.ApplyConfiguration(new AddressMapping())
+            .UseKeySequences(AddressMapping._sequenceName);
 
         #endregion
     }

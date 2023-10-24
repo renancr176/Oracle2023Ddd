@@ -7,7 +7,7 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb
     {
         public static ModelBuilder AddSequences(this ModelBuilder builder)
         {
-            builder.HasSequence<int>($"{AddressMapping._schema}.{AddressMapping._sequenceName}")
+            builder.HasSequence<int>(AddressMapping._sequenceName)
             .StartsAt(1)
             .IncrementsBy(1)
             .HasMax(int.MaxValue);

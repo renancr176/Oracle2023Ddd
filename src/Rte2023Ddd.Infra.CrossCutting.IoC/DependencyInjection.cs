@@ -6,7 +6,6 @@ using Rte2023Ddd.Application.Events;
 using Rte2023Ddd.Application.Queries;
 using Rte2023Ddd.Application.Services;
 using Rte2023Ddd.Domain.Core.Messages.CommonMessages.Notifications;
-using Rte2023Ddd.Domain.Core.Options;
 using Rte2023Ddd.Domain.TmsContext.Validators;
 using Rte2023Ddd.Infra.Data.Contexts.TmsDb;
 

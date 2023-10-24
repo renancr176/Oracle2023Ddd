@@ -17,9 +17,9 @@ public class AddressMapping : EntityAutoIncrementIdMap<Address>
         builder.ToTable("TMS_ENDERE");
 
         builder.Property(e => e.Id)
-            .HasColumnName("EDE_IDENTI")
-            .ValueGeneratedOnAdd()
-            .HasValueGenerator((_, __) => new SequenceValueGenerator(_schema, _sequenceName));
+            .HasColumnName("EDE_IDENTI");
+            /*.ValueGeneratedOnAdd()
+            .HasValueGenerator((_, __) => new SequenceValueGenerator(_schema, _sequenceName));*/
 
         builder.Property(e => e.TypeAddress)
             .HasColumnName("EDE_TIPLOG")
@@ -59,9 +59,9 @@ public class AddressMapping : EntityAutoIncrementIdMap<Address>
 
         #region Relationships
 
-        builder.HasOne(e => e.Person)
-            .WithMany(e => e.Addresses)
-            .HasForeignKey(e => e.PersonId);
+        //builder.HasOne(e => e.Person)
+        //    .WithMany(e => e.Addresses)
+        //    .HasForeignKey(e => e.PersonId);
 
         #endregion
     }

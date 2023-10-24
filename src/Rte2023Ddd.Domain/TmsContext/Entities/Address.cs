@@ -59,7 +59,7 @@ public class Address : EntityAutoIncrementId
 
     #region Relationships
 
-    public Person Person { get; set; }
+    //public Person Person { get; set; }
 
     #endregion
 }
