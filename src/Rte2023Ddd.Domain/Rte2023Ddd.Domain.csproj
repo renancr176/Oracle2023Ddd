@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TmsContext\Enums\" />
     <Folder Include="TmsContext\Interfaces\Validators\" />
     <Folder Include="TmsContext\Interfaces\Repositories\" />
   </ItemGroup>
