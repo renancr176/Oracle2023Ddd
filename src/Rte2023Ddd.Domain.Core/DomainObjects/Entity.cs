@@ -8,6 +8,10 @@ public abstract class Entity
     public DateTime CreatedAt { get; protected set; }
     public DateTime? UpdatedAt { get; set; }
     public DateTime? DeletedAt { get; set; }
+    public string CreatorProgram { get; set; }
+    public int CreatorUser { get; set; }
+    public string? UpdateProgram { get; set; }
+    public int? UpdateUser { get; set; }
 
     private List<Event> _notifications;
     public IReadOnlyCollection<Event> Notifications => _notifications?.AsReadOnly();

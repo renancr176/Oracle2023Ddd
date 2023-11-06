@@ -267,4 +267,10 @@ public static class StringExtensions
         for (var i = 0; i < s.Length; i += partLength)
             yield return s.Substring(i, Math.Min(partLength, s.Length - i));
     }
+
+    public static T? DbValueToEnum<T>(this string? dbValue) where T : Enum
+    {
+        return Enum.GetValues(typeof(T)).Cast<T>()
+            .FirstOrDefault(enumVal => enumVal.ToDbValue() == dbValue);
+    }
 }
