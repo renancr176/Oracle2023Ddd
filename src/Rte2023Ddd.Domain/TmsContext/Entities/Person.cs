@@ -27,4 +27,10 @@ public class Person : EntityAutoIncrementId
     public string FictitiousName { get; set; }
     public string Cnae { get; set; }
     public string CnaeDescription { get; set; }
+
+    #region Relationships
+
+    public ICollection<Address> Addresses { get; set; }
+
+    #endregion
 }

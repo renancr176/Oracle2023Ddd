@@ -12,6 +12,8 @@ public abstract class Entity
     public int CreatorUser { get; set; }
     public string? UpdateProgram { get; set; }
     public int? UpdateUser { get; set; }
+    public string? UserBdd { get; set; }
+    public int? SysRevisa { get; set; }
 
     private List<Event> _notifications;
     public IReadOnlyCollection<Event> Notifications => _notifications?.AsReadOnly();

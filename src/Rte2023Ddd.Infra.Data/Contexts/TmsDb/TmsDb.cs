@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Oracle.ManagedDataAccess.Client;
+using Rte2023Ddd.Domain.TmsContext.Interfaces.Repositories;
+using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Repositories;
 
 namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb;
 
@@ -10,13 +11,16 @@ public static class TmsDb
     public static void AddTmsDb(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<TmsDbContext>(dbContextOptions =>
-            dbContextOptions.UseOracle(configuration.GetConnectionString("TMS")));
+            dbContextOptions.UseOracle(configuration.GetConnectionString("TMS"), op => {
+                op.UseOracleSQLCompatibility("11");
+            }));
 
         //OracleConfiguration.TnsAdmin = @"J:\TNSNAMES";
 
         #region Repositories
 
-        //services.AddScoped<ISomeEntityRepository, SomeEntityRepository>();
+        services.AddScoped<IAddressRepository, AddressRepository>();
+        services.AddScoped<IPersonRepository, PersonRepository>();
 
         #endregion
 

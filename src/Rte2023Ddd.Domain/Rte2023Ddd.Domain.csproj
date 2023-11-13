@@ -10,9 +10,4 @@
     <ProjectReference Include="..\Rte2023Ddd.Domain.Core\Rte2023Ddd.Domain.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="TmsContext\Interfaces\Validators\" />
-    <Folder Include="TmsContext\Interfaces\Repositories\" />
-  </ItemGroup>
-
 </Project>

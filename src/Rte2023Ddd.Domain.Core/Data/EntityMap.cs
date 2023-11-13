@@ -32,10 +32,6 @@ public abstract class EntityAutoIncrementIdMap<TEntity> : IEntityTypeConfigurati
     {
         builder.HasKey(entity => entity.Id);
 
-        builder.Property(entity => entity.Id)
-            .UseIdentityColumn()
-            .HasColumnOrder(1);
-
         builder.Property(entity => entity.CreatedAt)
             .IsRequired();
 

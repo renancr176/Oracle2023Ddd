@@ -2,64 +2,48 @@
 
 namespace Rte2023Ddd.Domain.TmsContext.Entities;
 
-/// <summary>
-/// Endereço [TMS_ENDERE]
-/// </summary>
 public class Address : EntityAutoIncrementId
 {
-    /// <summary>
-    /// Identificador do endereço [EDE_IDENTI]
-    /// </summary>
-    //public int Id { get; set; }
-
-    /// <summary>
-    /// Tipo de Logradouro [EDE_TIPLOG]
-    /// </summary>
-    public string TypeAddress { get; set; }
-
-    /// <summary>
-    /// Endereco [EDE_ENDERE]
-    /// </summary>
-    public string StreetName { get; set; }
-
-    /// <summary>
-    /// Numero [EDE_NUMERO]
-    /// </summary>
-    public string Number { get; set; }
-
-    /// <summary>
-    /// Complemento [EDE_COMPLE]
-    /// </summary>
-    public string Supplement { get; set; }
-
-    /// <summary>
-    /// Bairro [EDE_BAIRRO]
-    /// </summary>
-    public string District { get; set; }
-
-    /// <summary>
-    /// Unidade da Federação [EDE_UNF_UNIFED]
-    /// </summary>
-    public string UnitFederationCode { get; set; }
-
-    /// <summary>
-    /// Cidade [EDE_CIDADE]
-    /// </summary>
-    public string City { get; set; }
-
-    /// <summary>
-    /// Codigo de enderecamento postal CEP [EDE_CEP]
-    /// </summary>
+    public string Type { get; set; }
+    public DateTime BeginningDate { get; set; }
+    public DateTime? EndingDate { get; set; }
     public string Cep { get; set; }
-
-    /// <summary>
-    /// Pessoa do endereço [EDE_PES_IDENTI]
-    /// </summary>
-    public int PersonId { get; set; }
+    public string? TypeAddress { get; set; }
+    public string StreetName { get; set; }
+    public string? Number { get; set; }
+    public string? Supplement { get; set; }
+    public string? District { get; set; }
+    public string? City { get; set; }
+    public string? IbgeCity { get; set; }
+    public string UnitFederationCode { get; set; }
+    public string? State { get; set; }
+    public int? IbgeUf { get; set; }
+    public string? Country { get; set; }
+    public int? IbgeCountry { get; set; }
+    public bool Active {
+        get { return ActiveDb.ToUpper() == "S"; }
+        set { ActiveDb = value ? "S" : "N"; } 
+    }
+    public string ActiveDb { get; private set; }
+    public int? IdPerson { get; set; }
+    public string Origin { get; set; }
+    public bool Changed { 
+        get { return ChangedDb.ToUpper() == "S"; }
+        set { ChangedDb = value ? "S" : "N"; }
+    }
+    public string ChangedDb { get; private set; }
+    public string CountryCode { get; set; }
+    public int CityId { get; set; }
+    public int? ParentId { get; set; }
+    public string? RedispatchDescription { get; set; }
+    public DateTime? WindowDeliveryBegin { get; set; }
+    public DateTime? WindowDeliveryFinal { get; set; }
+    public DateTime? RestrictWindowDeliveryBegin { get; set; }
+    public DateTime? RestrictWindowDeliveryFinal { get; set; }
 
     #region Relationships
 
-    //public Person Person { get; set; }
+    public Person Person { get; set; }
 
     #endregion
 }

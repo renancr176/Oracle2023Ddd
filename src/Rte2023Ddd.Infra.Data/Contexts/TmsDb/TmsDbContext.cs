@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Rte2023Ddd.Domain.Core.Data;
 using Rte2023Ddd.Domain.Core.Messages;
+using Rte2023Ddd.Domain.TmsContext.Entities;
 using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
 
 namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb; 
@@ -21,6 +22,10 @@ public class TmsDbContext : DbContext, IUnitOfWork
     public IDbContextTransaction Transaction { get; private set; }
 
     #region DbSets
+
+    public DbSet<Person> People { get; set; }
+    public DbSet<Address> Addresses { get; set; }
+
     #endregion
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -46,8 +51,8 @@ public class TmsDbContext : DbContext, IUnitOfWork
 
         #region Mappings
 
-        builder.ApplyConfiguration(new AddressMapping())
-            .UseKeySequences(AddressMapping._sequenceName);
+        builder.ApplyConfiguration(new PersonMapping());
+        builder.ApplyConfiguration(new AddressMapping());
 
         #endregion
     }

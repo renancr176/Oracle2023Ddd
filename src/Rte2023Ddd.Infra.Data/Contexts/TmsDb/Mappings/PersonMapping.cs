@@ -7,6 +7,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
 
 public class PersonMapping : EntityAutoIncrementIdMap<Person>
 {
+    public static string _schema = "TMS";
+    public static string _sequenceName = "SEQ_PESSOA";
+
     public override void Configure(EntityTypeBuilder<Person> builder)
     {
         base.Configure(builder);
@@ -14,7 +17,9 @@ public class PersonMapping : EntityAutoIncrementIdMap<Person>
         builder.ToTable("TMS_PESSOA");
 
         builder.Property(e => e.Id)
-            .HasColumnName("PES_IDENTI");   
+            .HasColumnName("PES_IDENTI")
+            .ValueGeneratedOnAdd()
+            .HasValueGenerator((_, __) => new SequenceValueGenerator(_schema, _sequenceName));
 
         builder.Property(e => e.TypePersonDb)
             .HasColumnName("PES_TIPPES")
@@ -69,10 +74,57 @@ public class PersonMapping : EntityAutoIncrementIdMap<Person>
             .HasMaxLength(255)
             .IsRequired(false);
 
-        builder.Property(e => e.PersonCreatorProgram)
+        #region System control columns
+
+        builder.Property(e => e.CreatedAt)
+            .HasColumnName("PES_DATCRI")
+            .IsRequired();
+
+        builder.Property(e => e.CreatorProgram)
             .HasColumnName("PES_PRGCRI")
             .HasColumnType("VARCHAR2")
             .HasMaxLength(35)
             .IsRequired();
+
+        builder.Property(e => e.CreatorUser)
+            .HasColumnName("PES_USUCRI")
+            .IsRequired();
+
+        builder.Property(e => e.UpdatedAt)
+            .HasColumnName("PES_DATALT")
+            .IsRequired(false);
+
+        builder.Property(e => e.UpdateProgram)
+            .HasColumnName("PES_PRGALT")
+            .HasColumnType("VARCHAR2")
+            .HasMaxLength(35)
+            .IsRequired();
+
+        builder.Property(e => e.UpdateUser)
+            .HasColumnName("PES_USUALT")
+            .IsRequired(false);
+
+        builder.Property(e => e.UserBdd)
+            .HasColumnName("PES_USUBDD")
+            .HasColumnType("VARCHAR2")
+            .HasMaxLength(35)
+            .IsRequired();
+
+        builder.Property(e => e.SysRevisa)
+            .HasColumnName("SYS_REVISA")
+            .IsRequired();
+
+        builder.Ignore(e => e.DeletedAt);
+
+        #endregion
+
+        #region Relationships
+
+        builder.HasMany(e => e.Addresses)
+            .WithOne(e => e.Person)
+            .HasForeignKey(e => e.IdPerson)
+            .IsRequired(false);
+
+        #endregion
     }
 }

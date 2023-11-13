@@ -1,20 +1,19 @@
 ﻿using Rte2023Ddd.Domain.Core.Attributes;
-using System.ComponentModel;
 
 namespace Rte2023Ddd.Domain.TmsContext.Enums;
 
 public enum PersonTypeEnum
 {
     [EnumDbStringValueAttribute("")]
-    [DisplayName("")]
+    //[DisplayName("")]
     None,
     [EnumDbStringValueAttribute("J")]
-    [DisplayName("FÍSICA")]
+    //[DisplayName("FÍSICA")]
     Legal,
     [EnumDbStringValueAttribute("F")]
-    [DisplayName("JURÍDICA")]
+    //[DisplayName("JURÍDICA")]
     Natural,
     [EnumDbStringValueAttribute("E")]
-    [DisplayName("ESTRANGEIRO")]
+    //[DisplayName("ESTRANGEIRO")]
     Foreign 
 }

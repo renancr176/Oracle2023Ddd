@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using System.ComponentModel.DataAnnotations;
+using FluentValidation.Results;
 
 namespace Rte2023Ddd.Domain.Core.DomainObjects;
 
