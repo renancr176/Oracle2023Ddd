@@ -79,6 +79,45 @@ public class AddressValidator :
     public const string CountryCodeMaxLength = "A sigla do país do endereço excedeu #LENGTH caracteres.";
 
     public const string CityIdMinVal = "O Id da cidade informada do endereço deve ser maior que #VAL.";
+    
+    public const string ParentIdMinVal = "O Id do endereço principal deve ser maior que #VAL.";
+    public const string ParentIdNotExists = "O endereço principal não existe.";
+    
+    public const string RedispatchDescriptionMaxLenght = "A descição do redespacho do endereço excedeu #LENGTH caracteres.";
+    
+    public const string WindowDeliveryBeginMinVal = "A data de início da janela de entrega do endereço deve ser maior que #VAL.";
+
+    public const string WindowDeliveryFinalMinVal = "A data final da janela de entrega do endereço deve ser maior que a data de início.";
+    public const string WindowDeliveryFinalShouldBeNull = "A data final da janela de entrega do endereço não pode ter valor pois a data de início não foi definida.";
+
+    public const string RestrictWindowDeliveryBeginMinVal = "A data de início de restrição da janela de entrega do endereço deve ser maior que #VAL.";
+
+    public const string RestrictWindowDeliveryFinalMinVal = "A data final de restrição da janela de entrega do endereço deve ser maior que a data de início.";
+    public const string RestrictWindowDeliveryFinalShouldBeNull = "A data final de restrição da janela de entrega do endereço não pode ter valor pois a data de início não foi definida.";
+    
+    public const string ConflictBetweenWindowDelivery = "Existe conflito entre as datas de restrição e funcionamento das janelas de entrega do endereço.";
+
+    #region System control params
+
+    public const string CreatorProgramIsRequired = "O nome do objeto de criação é obrigatório.";
+    public const string CreatorProgramMinLength = "O nome do objeto de criação deve ter ao menos #LENGHT caracater(es).";
+    public const string CreatorProgramMaxLength = "O nome do objeto de criação excedeu #LENGTH caracteres.";
+    
+    public const string CreatorUserMinVal = "O Id do usuário de criação deve ser maior que #VAL.";
+    //public const string CreatorUserNotExists = "O usuário de criação inexistente.";
+    
+    public const string UpdateProgramIsRequired = "O nome do objeto de alteração é obrigatório.";
+    public const string UpdateProgramMinLength = "O nome do objeto de alteração deve ter ao menos #LENGHT caracater(es).";
+    public const string UpdateProgramMaxLength = "O nome do objeto de alteração excedeu #LENGTH caracteres.";
+    
+    public const string UpdateUserMinVal = "O Id do usuário de alteração deve ser maior que #VAL.";
+    //public const string UpdateUserNotExists = "O usuário de alteração inexistente.";
+
+    public const string UserBddIsRequired = "O nome do sistema de criação é obrigatório.";
+    public const string UserBddMinLength = "O nome do sistema de criação deve pussuir ao menos #LENGTH caracter(es).";
+    public const string UserBddMaxLength = "O nome do sistema de criação excedeu #LENGTH caracteres.";
+
+    #endregion
 
     #endregion
 
@@ -123,7 +162,7 @@ public class AddressValidator :
             .WithErrorCode(nameof(BeginningDateMinVal))
             .WithMessage(BeginningDateMinVal.Replace("#VAL", DateTime.MinValue.ToString("G", new CultureInfo("pt-BR"))));
 
-        When(e => e.EndingDate != null, () =>
+        When(e => e.EndingDate.HasValue, () =>
         {
             RuleFor(e => e.EndingDate)
                 .GreaterThan(e => e.BeginningDate)
@@ -196,7 +235,7 @@ public class AddressValidator :
             .WithErrorCode(nameof(StateMaxLenght))
             .WithMessage(StateMaxLenght.Replace("#LENGTH", "35"));
 
-        When(e => e.IbgeUf != null, () =>
+        When(e => e.IbgeUf.HasValue, () =>
         {
             RuleFor(e => e.IbgeUf)
                 .GreaterThan(0)
@@ -217,7 +256,7 @@ public class AddressValidator :
                 .WithMessage(IbgeCountryMinVal.Replace("#VAL", "0"));
         });
 
-        When(e => e.IdPerson != null, () =>
+        When(e => e.IdPerson.HasValue, () =>
         {
             RuleFor(e => e.IdPerson)
                 .MustAsync(PersonMustExistsAsync)
@@ -266,13 +305,137 @@ public class AddressValidator :
         //.WithErrorCode(nameof(CityIdNotExists))
         //.WithMessage(CityIdNotExists);
 
-        When(e => e.ParentId != null, () =>
+        When(e => e.ParentId.HasValue, () =>
         {
             RuleFor(e => e.ParentId)
                 .Cascade(CascadeMode.Stop)
                 .GreaterThan(0)
-                .MustAsync(ParentAddressMustExistsAsync);
+                .WithErrorCode(nameof(ParentIdMinVal))
+                .WithMessage(ParentIdMinVal.Replace("#VAL", "0"))
+                .MustAsync(ParentAddressMustExistsAsync)
+                .WithErrorCode(nameof(ParentIdNotExists))
+                .WithMessage(ParentIdNotExists);
         });
+
+        RuleFor(e => e.RedispatchDescription)
+            .MaximumLength(65)
+            .WithErrorCode(nameof(RedispatchDescriptionMaxLenght))
+            .WithMessage(RedispatchDescriptionMaxLenght.Replace("#LENGTH", "65"));
+
+        When(e => e.WindowDeliveryBegin.HasValue, () =>
+        {
+            RuleFor(e => e.WindowDeliveryBegin)
+                .GreaterThan(DateTime.MinValue)
+                .WithErrorCode(nameof(WindowDeliveryBeginMinVal))
+                .WithMessage(WindowDeliveryBeginMinVal.Replace("#VAL", DateTime.MinValue.ToString("G", new CultureInfo("pt-BR"))));
+
+            When(e => e.WindowDeliveryFinal.HasValue, () =>
+            {
+                RuleFor(e => e.WindowDeliveryFinal)
+                    .GreaterThan(e => e.WindowDeliveryBegin)
+                    .WithErrorCode(nameof(WindowDeliveryFinalMinVal))
+                    .WithMessage(e => WindowDeliveryFinalMinVal.Replace("#VAL", e.WindowDeliveryBegin.Value.ToString("G", new CultureInfo("pt-BR"))));
+            });
+        }).Otherwise(() =>
+        {
+            RuleFor(e => e.WindowDeliveryFinal)
+                .Null()
+                .WithErrorCode(nameof(WindowDeliveryFinalShouldBeNull))
+                .WithMessage(WindowDeliveryFinalShouldBeNull);
+        });
+
+        When(e => e.RestrictWindowDeliveryBegin.HasValue, () =>
+        {
+            RuleFor(e => e.RestrictWindowDeliveryBegin)
+                .Cascade(CascadeMode.Stop)
+                .GreaterThan(DateTime.MinValue)
+                .WithErrorCode(nameof(RestrictWindowDeliveryBeginMinVal))
+                .WithMessage(RestrictWindowDeliveryBeginMinVal.Replace("#VAL", DateTime.MinValue.ToString("G", new CultureInfo("pt-BR"))))
+                .Must(NoConflictBetweenWindowDelivery)
+                .WithErrorCode(nameof(ConflictBetweenWindowDelivery))
+                .WithMessage(ConflictBetweenWindowDelivery);
+
+            When(e => e.RestrictWindowDeliveryFinal.HasValue, () =>
+            {
+                RuleFor(e => e.RestrictWindowDeliveryFinal)
+                    .GreaterThan(e => e.RestrictWindowDeliveryBegin)
+                    .WithErrorCode(nameof(RestrictWindowDeliveryFinalMinVal))
+                    .WithMessage(e => RestrictWindowDeliveryFinalMinVal.Replace("#VAL", e.RestrictWindowDeliveryBegin.Value.ToString("G", new CultureInfo("pt-BR"))));
+            });
+        }).Otherwise(() =>
+        {
+            RuleFor(e => e.RestrictWindowDeliveryFinal)
+                .Null()
+                .WithErrorCode(nameof(RestrictWindowDeliveryFinalShouldBeNull))
+                .WithMessage(RestrictWindowDeliveryFinalShouldBeNull);
+        });
+
+        #region System control params
+
+        RuleFor(e => e.CreatorProgram)
+            .Cascade(CascadeMode.Stop)
+            .NotNull()
+            .WithErrorCode(nameof(CreatorProgramIsRequired))
+            .WithMessage(CreatorProgramIsRequired)
+            .NotEmpty()
+            .WithErrorCode(nameof(CreatorProgramIsRequired))
+            .WithMessage(CreatorProgramIsRequired)
+            .MinimumLength(1)
+            .WithErrorCode(nameof(CreatorProgramMinLength))
+            .WithMessage(CreatorProgramMinLength.Replace("#LENGTH", "1"))
+            .MaximumLength(35)
+            .WithErrorCode(nameof(CreatorProgramMaxLength))
+            .WithMessage(CreatorProgramMaxLength.Replace("#LENGTH", "35"));
+
+        RuleFor(e => e.CreatorUser)
+            .Cascade(CascadeMode.Stop)
+            .GreaterThan(0)
+            .WithErrorCode(nameof(CreatorUserMinVal))
+            .WithMessage(CreatorUserMinVal.Replace("#VAL", ""));
+            //.MustAsync(UserExistsAsync)
+            //.WithErrorCode(nameof(CreatorUserNotExists))
+            //.WithMessage(CreatorUserNotExists);
+
+        RuleFor(e => e.UpdateProgram)
+            .Cascade(CascadeMode.Stop)
+            .NotNull()
+            .WithErrorCode(nameof(UpdateProgramIsRequired))
+            .WithMessage(UpdateProgramIsRequired)
+            .NotEmpty()
+            .WithErrorCode(nameof(UpdateProgramIsRequired))
+            .WithMessage(UpdateProgramIsRequired)
+            .MinimumLength(1)
+            .WithErrorCode(nameof(UpdateProgramMinLength))
+            .WithMessage(UpdateProgramMinLength.Replace("#LENGTH", "1"))
+            .MaximumLength(35)
+            .WithErrorCode(nameof(UpdateProgramMaxLength))
+            .WithMessage(UpdateProgramMaxLength.Replace("#LENGTH", "35"));
+
+        RuleFor(e => e.UpdateUser)
+            .Cascade(CascadeMode.Stop)
+            .GreaterThan(0)
+            .WithErrorCode(nameof(UpdateUserMinVal))
+            .WithMessage(UpdateUserMinVal.Replace("#VAL", ""));
+            //.MustAsync(UserExistsAsync)
+            //.WithErrorCode(nameof(UpdateUserNotExists))
+            //.WithMessage(UpdateUserNotExists);
+
+        RuleFor(e => e.UserBdd)
+            .Cascade(CascadeMode.Stop)
+            .NotNull()
+            .WithErrorCode(nameof(UserBddIsRequired))
+            .WithMessage(UserBddIsRequired)
+            .NotEmpty()
+            .WithErrorCode(nameof(UserBddIsRequired))
+            .WithMessage(UserBddIsRequired)
+            .MinimumLength(1)
+            .WithErrorCode(nameof(UserBddMinLength))
+            .WithMessage(UserBddMinLength)
+            .MaximumLength(35)
+            .WithErrorCode(nameof(UserBddMaxLength))
+            .WithMessage(UserBddMaxLength);
+
+        #endregion
     }
 
     private bool ValidType(string type)
@@ -302,6 +465,35 @@ public class AddressValidator :
     {
         return await _addressRepository.AnyAsync(e => e.Id == parentId);
     }
+
+    private bool NoConflictBetweenWindowDelivery(Address entity, DateTime? date)
+    {
+        var windowDeliveryBegin = entity.WindowDeliveryBegin ?? DateTime.MinValue;
+        var windowDeliveryFinal = entity.WindowDeliveryFinal ?? windowDeliveryBegin.Date.Add(new TimeSpan(0,23,59,59));
+
+        if (entity.RestrictWindowDeliveryBegin.HasValue && entity.RestrictWindowDeliveryFinal.HasValue
+        && (
+            (entity.RestrictWindowDeliveryBegin >= windowDeliveryBegin && entity.RestrictWindowDeliveryBegin <= windowDeliveryFinal)
+            || (entity.RestrictWindowDeliveryFinal >= windowDeliveryBegin && entity.RestrictWindowDeliveryFinal <= windowDeliveryFinal)
+            )
+        )
+        {
+            return false;
+        }
+
+        if (entity.RestrictWindowDeliveryBegin.HasValue && !entity.RestrictWindowDeliveryFinal.HasValue
+        && entity.RestrictWindowDeliveryBegin >= windowDeliveryBegin && entity.RestrictWindowDeliveryBegin <= windowDeliveryFinal)
+        {
+            return false;
+        }
+    
+        return true;
+    }
+
+    //private async Task<bool> UserExistsAsync(int userId, CancellationToken token)
+    //{
+    //    return _userRepository.AnyAsync(e => e.Id == userId);
+    //}
 
     public async Task<bool> IsValidAsync(Address entity)
     {

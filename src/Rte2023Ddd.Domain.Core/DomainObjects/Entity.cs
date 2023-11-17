@@ -22,6 +22,8 @@ public abstract class Entity
     {
         Id = Guid.NewGuid();
         CreatedAt = DateTime.UtcNow;
+        UserBdd = "DDD";
+        SysRevisa = 99999;
     }
 
     protected Entity(Guid id)
