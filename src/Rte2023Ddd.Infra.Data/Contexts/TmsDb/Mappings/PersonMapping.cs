@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Rte2023Ddd.Domain.Core.Data;
 using Rte2023Ddd.Domain.TmsContext.Entities;
@@ -20,6 +21,8 @@ public class PersonMapping : EntityAutoIncrementIdMap<Person>
             .HasColumnName("PES_IDENTI")
             .ValueGeneratedOnAdd()
             .HasValueGenerator((_, __) => new SequenceValueGenerator(_schema, _sequenceName));
+
+        builder.Ignore(e => e.TypePerson);
 
         builder.Property(e => e.TypePersonDb)
             .HasColumnName("PES_TIPPES")

@@ -286,9 +286,6 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnType("VARCHAR2")
                         .HasColumnName("PES_CPFCNP");
 
-                    b.Property<int>("TypePerson")
-                        .HasColumnType("NUMBER(10)");
-
                     b.Property<string>("TypePersonDb")
                         .IsRequired()
                         .HasMaxLength(5)

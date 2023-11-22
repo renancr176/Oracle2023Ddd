@@ -12,8 +12,8 @@ using Rte2023Ddd.Infra.Data.Contexts.TmsDb;
 namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
 {
     [DbContext(typeof(TmsDbContext))]
-    [Migration("20231113155651_V0.0.2")]
-    partial class V002
+    [Migration("20231122155743_V0.0.1")]
+    partial class V001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -288,9 +288,6 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("VARCHAR2")
                         .HasColumnName("PES_CPFCNP");
-
-                    b.Property<int>("TypePerson")
-                        .HasColumnType("NUMBER(10)");
 
                     b.Property<string>("TypePersonDb")
                         .IsRequired()
