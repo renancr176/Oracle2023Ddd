@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Rte2023Ddd.Domain.Core.DomainObjects;
 using Rte2023Ddd.Domain.Core.Extensions;
 using Rte2023Ddd.Domain.TmsContext.Entities;
 using Rte2023Ddd.Domain.TmsContext.Enums;
@@ -8,7 +9,9 @@ using Rte2023Ddd.Domain.TmsContext.Interfaces.Validators;
 
 namespace Rte2023Ddd.Domain.TmsContext.Validators;
 
-public class PersonValidator : AbstractValidator<Person>, IPersonValidator
+public class PersonValidator : 
+    EntityValidator<Person>, 
+    IPersonValidator
 {
     #region Consts
 
@@ -23,30 +26,26 @@ public class PersonValidator : AbstractValidator<Person>, IPersonValidator
     public const string TaxIdRegistrationMaxLength = "O TaxIdRegistration excedeu #LENGTH caracteres.";
     public const string TaxIdRegistrationIsInvaid = "O TaxIdRegistration excedeu #LENGTH caracteres.";
     public const string TaxIdRegistrationAlreadyExists = "Já existe um cadastro com o mesmo TaxIdRegistration informado.";
+    
+    public const string StadualIdRegistrationMaxLength = "O registro estadual excedeu #LENGTH caracteres.";
+    
+    public const string RegionalIdRegistrationMaxLength = "O registro regional excedeu #LENGTH caracteres.";
+    
+    public const string DescriptionIsRequired = "O nome é obrigatório.";
+    public const string DescriptionMinLength = "O nome deve conter ao menos #LENGTH caracter(es).";
+    public const string DescriptionMaxLength = "O nome excedeu #LENGTH caracteres.";
 
-    #region System control params
+    public const string ReductedDescriptionMaxLength = "O nome reduzido excedeu #LENGTH caracteres.";
+    
+    public const string FictitiousNameMaxLength = "O nome fantasia excedeu #LENGTH caracteres.";
 
-    public const string CreatorProgramIsRequired = "O nome do objeto de criação é obrigatório.";
-    public const string CreatorProgramMinLength = "O nome do objeto de criação deve ter ao menos #LENGHT caracater(es).";
-    public const string CreatorProgramMaxLength = "O nome do objeto de criação excedeu #LENGTH caracteres.";
+    public const string CnaeMinLength = "O CNAE deve possuir ao menos #LENGTH caracter(es).";
+    public const string CnaeMaxLength = "O CNAE excedeu #LENGTH caracteres.";
 
-    public const string CreatorUserMinVal = "O Id do usuário de criação deve ser maior que #VAL.";
-    //public const string CreatorUserNotExists = "O usuário de criação inexistente.";
-
-    public const string UpdateProgramIsRequired = "O nome do objeto de alteração é obrigatório.";
-    public const string UpdateProgramMinLength = "O nome do objeto de alteração deve ter ao menos #LENGHT caracater(es).";
-    public const string UpdateProgramMaxLength = "O nome do objeto de alteração excedeu #LENGTH caracteres.";
-
-    public const string UpdateUserMinVal = "O Id do usuário de alteração deve ser maior que #VAL.";
-    //public const string UpdateUserNotExists = "O usuário de alteração inexistente.";
-
-    public const string UserBddIsRequired = "O nome do sistema de criação é obrigatório.";
-    public const string UserBddMinLength = "O nome do sistema de criação deve pussuir ao menos #LENGTH caracter(es).";
-    public const string UserBddMaxLength = "O nome do sistema de criação excedeu #LENGTH caracteres.";
-
-    public const string SysRevisaMinVal = "O código do sistema de criação deve maior que #VAL.";
-
-    #endregion
+    public const string CnaeDescriptionIsRequired = "A descrição do CNAE é obrigatória.";
+    public const string CnaeDescriptionMinLength = "A descrição do CNAE deve conter ao menos #LENGTH caracter(es).";
+    public const string CnaeDescriptionMaxLength = "A descrição do CNAE excedeu #LENGTH caracteres.";
+    public const string CnaeDescriptionNotAllowed = "A descrição do CNAE só pode ser informada se o número do CNAE for informado.";
 
     #endregion
 
@@ -109,93 +108,74 @@ public class PersonValidator : AbstractValidator<Person>, IPersonValidator
             .WithErrorCode(nameof(TaxIdRegistrationAlreadyExists))
             .WithMessage(e => ReplaceTaxIdRegistrationOnErroMessage(e, TaxIdRegistrationAlreadyExists));
 
-        RuleFor(e => e.StadualIdRegistration);
+        RuleFor(e => e.StadualIdRegistration)
+            .MaximumLength(15)
+            .WithErrorCode(nameof(StadualIdRegistrationMaxLength))
+            .WithMessage(StadualIdRegistrationMaxLength.Replace("#LENGTH", "15"));
 
-        RuleFor(e => e.RegionalIdRegistration);
+        RuleFor(e => e.RegionalIdRegistration)
+            .MaximumLength(35)
+            .WithErrorCode(nameof(RegionalIdRegistrationMaxLength))
+            .WithMessage(RegionalIdRegistrationMaxLength.Replace("#LENGTH", "35")); ;
 
-        RuleFor(e => e.Description);
-
-        RuleFor(e => e.ReductedDescription);
-
-        RuleFor(e => e.FictitiousName);
-
-        RuleFor(e => e.Cnae);
-
-        RuleFor(e => e.CnaeDescription);
-
-        RuleFor(e => e.CnaeDescription);
-
-        #region System control params
-
-        RuleFor(e => e.CreatorProgram)
+        RuleFor(e => e.Description)
             .Cascade(CascadeMode.Stop)
             .NotNull()
-            .WithErrorCode(nameof(CreatorProgramIsRequired))
-            .WithMessage(CreatorProgramIsRequired)
+            .WithErrorCode(nameof(DescriptionIsRequired))
+            .WithMessage(DescriptionIsRequired)
             .NotEmpty()
-            .WithErrorCode(nameof(CreatorProgramIsRequired))
-            .WithMessage(CreatorProgramIsRequired)
+            .WithErrorCode(nameof(DescriptionIsRequired))
+            .WithMessage(DescriptionIsRequired)
             .MinimumLength(1)
-            .WithErrorCode(nameof(CreatorProgramMinLength))
-            .WithMessage(CreatorProgramMinLength.Replace("#LENGTH", "1"))
+            .WithErrorCode(nameof(DescriptionMinLength))
+            .WithMessage(DescriptionMinLength.Replace("#LENGTH", "1"))
+            .MaximumLength(65)
+            .WithErrorCode(nameof(DescriptionMaxLength))
+            .WithMessage(DescriptionMaxLength.Replace("#LENGTH", "65"));
+
+        RuleFor(e => e.ReductedDescription)
             .MaximumLength(35)
-            .WithErrorCode(nameof(CreatorProgramMaxLength))
-            .WithMessage(CreatorProgramMaxLength.Replace("#LENGTH", "35"));
+            .WithErrorCode(nameof(ReductedDescriptionMaxLength))
+            .WithMessage(ReductedDescriptionMaxLength.Replace("#LENGTH", "35"));
 
-        RuleFor(e => e.CreatorUser)
-            .Cascade(CascadeMode.Stop)
-            .GreaterThan(0)
-            .WithErrorCode(nameof(CreatorUserMinVal))
-            .WithMessage(CreatorUserMinVal.Replace("#VAL", ""));
-        //.MustAsync(UserExistsAsync)
-        //.WithErrorCode(nameof(CreatorUserNotExists))
-        //.WithMessage(CreatorUserNotExists);
+        RuleFor(e => e.FictitiousName)
+            .MaximumLength(65)
+            .WithErrorCode(nameof(FictitiousNameMaxLength))
+            .WithMessage(FictitiousNameMaxLength.Replace("#LENGTH", "65"));
 
-        RuleFor(e => e.UpdateProgram)
-            .Cascade(CascadeMode.Stop)
-            .NotNull()
-            .WithErrorCode(nameof(UpdateProgramIsRequired))
-            .WithMessage(UpdateProgramIsRequired)
-            .NotEmpty()
-            .WithErrorCode(nameof(UpdateProgramIsRequired))
-            .WithMessage(UpdateProgramIsRequired)
-            .MinimumLength(1)
-            .WithErrorCode(nameof(UpdateProgramMinLength))
-            .WithMessage(UpdateProgramMinLength.Replace("#LENGTH", "1"))
-            .MaximumLength(35)
-            .WithErrorCode(nameof(UpdateProgramMaxLength))
-            .WithMessage(UpdateProgramMaxLength.Replace("#LENGTH", "35"));
 
-        RuleFor(e => e.UpdateUser)
-            .Cascade(CascadeMode.Stop)
-            .GreaterThan(0)
-            .WithErrorCode(nameof(UpdateUserMinVal))
-            .WithMessage(UpdateUserMinVal.Replace("#VAL", ""));
-        //.MustAsync(UserExistsAsync)
-        //.WithErrorCode(nameof(UpdateUserNotExists))
-        //.WithMessage(UpdateUserNotExists);
+        When(e => !string.IsNullOrEmpty(e.Cnae.Trim()), () =>
+        {
+            RuleFor(e => e.Cnae)
+                .MinimumLength(8)
+                .WithErrorCode(nameof(CnaeMinLength))
+                .WithMessage(CnaeMinLength.Replace("#LENGTH", "8"))
+                .MaximumLength(8)
+                .WithErrorCode(nameof(CnaeMaxLength))
+                .WithMessage(CnaeMaxLength.Replace("#LENGTH", "8"));
 
-        RuleFor(e => e.UserBdd)
-            .Cascade(CascadeMode.Stop)
-            .NotNull()
-            .WithErrorCode(nameof(UserBddIsRequired))
-            .WithMessage(UserBddIsRequired)
-            .NotEmpty()
-            .WithErrorCode(nameof(UserBddIsRequired))
-            .WithMessage(UserBddIsRequired)
-            .MinimumLength(1)
-            .WithErrorCode(nameof(UserBddMinLength))
-            .WithMessage(UserBddMinLength)
-            .MaximumLength(35)
-            .WithErrorCode(nameof(UserBddMaxLength))
-            .WithMessage(UserBddMaxLength);
+            RuleFor(e => e.CnaeDescription)
+                .Cascade(CascadeMode.Stop)
+                .NotNull()
+                .WithErrorCode(nameof(CnaeDescriptionIsRequired))
+                .WithMessage(CnaeDescriptionIsRequired)
+                .NotEmpty()
+                .WithErrorCode(nameof(CnaeDescriptionIsRequired))
+                .WithMessage(CnaeDescriptionIsRequired)
+                .MaximumLength(1)
+                .WithErrorCode(nameof(CnaeDescriptionMinLength))
+                .WithMessage(CnaeDescriptionMinLength.Replace("#LENGTH", "1"))
+                .MaximumLength(255)
+                .WithErrorCode(nameof(CnaeDescriptionMaxLength))
+                .WithMessage(CnaeDescriptionMaxLength.Replace("#LENGTH", "255"));
 
-        RuleFor(e => e.SysRevisa)
-            .GreaterThan(0)
-            .WithErrorCode(nameof(SysRevisaMinVal))
-            .WithMessage(SysRevisaMinVal.Replace("#VAL", "0"));
-
-        #endregion
+        }).Otherwise(() =>
+        {
+            RuleFor(e => e.CnaeDescription)
+                .Null()
+                .WithErrorCode(nameof(CnaeDescriptionNotAllowed))
+                .WithMessage(CnaeDescriptionNotAllowed);
+        });
     }
 
     private string ReplaceTaxIdRegistrationOnErroMessage(Person entity, string message)
