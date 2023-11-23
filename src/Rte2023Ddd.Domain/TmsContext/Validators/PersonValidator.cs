@@ -41,6 +41,7 @@ public class PersonValidator :
 
     public const string CnaeMinLength = "O CNAE deve possuir ao menos #LENGTH caracter(es).";
     public const string CnaeMaxLength = "O CNAE excedeu #LENGTH caracteres.";
+    public const string CnaeNotExists = "O CNAE informado não existe.";
 
     public const string CnaeDescriptionIsRequired = "A descrição do CNAE é obrigatória.";
     public const string CnaeDescriptionMinLength = "A descrição do CNAE deve conter ao menos #LENGTH caracter(es).";
@@ -53,14 +54,17 @@ public class PersonValidator :
 
     private readonly IPersonRepository _personRepository;
     private readonly IAddressRepository _addressRepository;
+    private readonly ICnaeRepository _cnaeRepository;
     private readonly IAddressValidator _addressValidator;
 
     public PersonValidator(IPersonRepository personRepository,
         IAddressRepository addressRepository,
+        ICnaeRepository cnaeRepository,
         IAddressValidator addressValidator)
     {
         _personRepository = personRepository;
         _addressRepository = addressRepository;
+        _cnaeRepository = cnaeRepository;
         _addressValidator = addressValidator;
 
         RuleForEach(e => e.Addresses)
@@ -144,15 +148,18 @@ public class PersonValidator :
             .WithMessage(FictitiousNameMaxLength.Replace("#LENGTH", "65"));
 
 
-        When(e => !string.IsNullOrEmpty(e.Cnae.Trim()), () =>
+        When(e => !string.IsNullOrEmpty(e.IdCnae.Trim()), () =>
         {
-            RuleFor(e => e.Cnae)
+            RuleFor(e => e.IdCnae)
                 .MinimumLength(8)
                 .WithErrorCode(nameof(CnaeMinLength))
                 .WithMessage(CnaeMinLength.Replace("#LENGTH", "8"))
                 .MaximumLength(8)
                 .WithErrorCode(nameof(CnaeMaxLength))
-                .WithMessage(CnaeMaxLength.Replace("#LENGTH", "8"));
+                .WithMessage(CnaeMaxLength.Replace("#LENGTH", "8"))
+                .MustAsync(CnaeExistsAsync)
+                .WithErrorCode(nameof(CnaeNotExists))
+                .WithMessage(CnaeNotExists);
 
             RuleFor(e => e.CnaeDescription)
                 .Cascade(CascadeMode.Stop)
@@ -176,6 +183,11 @@ public class PersonValidator :
                 .WithErrorCode(nameof(CnaeDescriptionNotAllowed))
                 .WithMessage(CnaeDescriptionNotAllowed);
         });
+    }
+
+    private async Task<bool> CnaeExistsAsync(string idCnae, CancellationToken arg2)
+    {
+        return await _cnaeRepository.AnyAsync(e => e.Id == idCnae);
     }
 
     private string ReplaceTaxIdRegistrationOnErroMessage(Person entity, string message)

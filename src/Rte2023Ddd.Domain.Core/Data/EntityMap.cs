@@ -23,6 +23,7 @@ public abstract class EntityMap<TEntity> : IEntityTypeConfiguration<TEntity> whe
         builder.Ignore(e => e.CreatedAt);
         builder.Ignore(e => e.UpdatedAt);
         builder.Ignore(e => e.DeletedAt);
+        builder.Ignore(e => e.SysRevisa);
     }
 }
 

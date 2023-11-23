@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Rte2023Ddd.Domain.Core.Data;
 
 namespace Rte2023Ddd.Domain.Core.DomainObjects;
 
@@ -108,4 +109,50 @@ public abstract class EntityValidator<TEntity> : AbstractValidator<TEntity>
     //{
     //    return await _userRepository.Any(e => e.Id == userId);
     //}
+}
+
+public abstract class EntityStringIdValidator<TEntity> : EntityValidator<TEntity>
+    where TEntity : EntityStringId
+{
+    #region Consts
+
+    public const string IdIsRequired = "O Id é obrigatório.";
+    public const string IdMinLength = "O Id deve possuir ao menos #LENGTH caracter(es).";
+    public const string IdMaxLength = "O Id excedeu #LENGTH caracteres.";
+    public const string IdAlreadyExists = "Existe outro registro com o mesmo ID.";
+
+    #endregion
+
+    private readonly IRepository<TEntity> _entityRepository;
+
+    public EntityStringIdValidator(
+        IRepository<TEntity> entityRepository, 
+        int idMinLength, 
+        int idMaxLength)
+    {
+        _entityRepository = entityRepository;
+
+        RuleFor(e => e.Id)
+            .Cascade(CascadeMode.Stop)
+            .NotNull()
+            .WithErrorCode(nameof(IdIsRequired))
+            .WithMessage(IdIsRequired)
+            .NotEmpty()
+            .WithErrorCode(nameof(IdIsRequired))
+            .WithMessage(IdIsRequired)
+            .MinimumLength(idMinLength)
+            .WithErrorCode(nameof(IdMinLength))
+            .WithMessage(IdMinLength.Replace("#LENGTH", $"{idMinLength}"))
+            .MaximumLength(idMaxLength)
+            .WithErrorCode(nameof(IdMaxLength))
+            .WithMessage(IdMaxLength.Replace("#LENGTH", $"{idMaxLength}"))
+            .MustAsync(IdUniqueAsync)
+            .WithErrorCode(nameof(IdAlreadyExists))
+            .WithMessage(IdAlreadyExists);
+    }
+
+    private async Task<bool> IdUniqueAsync(TEntity entity, string id, CancellationToken arg3)
+    {
+        return !await _entityRepository.AnyAsync(e => e.Id == id && e.CreatedAt != entity.CreatedAt);
+    }
 }

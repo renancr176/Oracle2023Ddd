@@ -16,13 +16,6 @@ public class AddressMapping : EntityAutoIncrementIdMap<Address>
 
         builder.ToTable("TMS_ENDERE");
 
-        #region Indexes
-
-        builder.HasIndex(e => e.IdPerson)
-            .HasName("IX_ENDERE_EDE_PES_IDENTI");
-
-        #endregion
-
         builder.Property(e => e.Id)
             .HasColumnName("EDE_IDENTI")
             .ValueGeneratedOnAdd()
@@ -211,10 +204,6 @@ public class AddressMapping : EntityAutoIncrementIdMap<Address>
             .HasColumnType("VARCHAR2")
             .HasMaxLength(35)
             .IsRequired();
-
-        builder.Ignore(e => e.DeletedAt);
-
-        builder.Ignore(e => e.SysRevisa);
 
         #endregion
 

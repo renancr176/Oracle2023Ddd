@@ -25,12 +25,14 @@ public class Person : EntityAutoIncrementId
     public string Description { get; set; }
     public string ReductedDescription { get; set; }
     public string FictitiousName { get; set; }
-    public string Cnae { get; set; }
+    public string IdCnae { get; set; }
     public string CnaeDescription { get; set; }
 
     #region Relationships
 
+    public Cnae Cnae { get; set; }
     public ICollection<Address> Addresses { get; set; }
+    //public Customer Customer { get; set; }
 
     #endregion
 }

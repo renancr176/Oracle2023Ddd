@@ -17,6 +17,13 @@ public class PersonMapping : EntityAutoIncrementIdMap<Person>
 
         builder.ToTable("TMS_PESSOA");
 
+        #region Indexes
+
+        builder.HasIndex(e => e.IdCnae)
+            .HasName("FK_TMS_CNAE_CNA_CNAE");
+
+        #endregion
+
         builder.Property(e => e.Id)
             .HasColumnName("PES_IDENTI")
             .ValueGeneratedOnAdd()
@@ -65,7 +72,7 @@ public class PersonMapping : EntityAutoIncrementIdMap<Person>
             .HasMaxLength(65)
             .IsRequired(false);
 
-        builder.Property(e => e.Cnae)
+        builder.Property(e => e.IdCnae)
             .HasColumnName("PES_CNA_CNAE")
             .HasColumnType("VARCHAR2")
             .HasMaxLength(8)
@@ -101,7 +108,7 @@ public class PersonMapping : EntityAutoIncrementIdMap<Person>
             .HasColumnName("PES_PRGALT")
             .HasColumnType("VARCHAR2")
             .HasMaxLength(35)
-            .IsRequired();
+            .IsRequired(false);
 
         builder.Property(e => e.UpdateUser)
             .HasColumnName("PES_USUALT")
@@ -122,6 +129,12 @@ public class PersonMapping : EntityAutoIncrementIdMap<Person>
         #endregion
 
         #region Relationships
+
+        builder.HasOne(e => e.Cnae)
+            .WithMany(e => e.People)
+            .HasForeignKey(e => e.IdCnae)
+            .IsRequired(false)
+            .HasConstraintName("FK_PES_CNA_CNAE");
 
         builder.HasMany(e => e.Addresses)
             .WithOne(e => e.Person)

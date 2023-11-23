@@ -20,6 +20,33 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                 maxValue: 2147483647L);
 
             migrationBuilder.CreateTable(
+                name: "TMS_CNAE",
+                columns: table => new
+                {
+                    CNA_CNAE = table.Column<string>(type: "VARCHAR2(8)", maxLength: 8, nullable: false),
+                    CNA_RELAC = table.Column<string>(type: "VARCHAR2(8)", maxLength: 8, nullable: true),
+                    CNA_DESCRI = table.Column<string>(type: "VARCHAR2(255)", maxLength: 255, nullable: false),
+                    CNA_SUBCLA = table.Column<string>(type: "VARCHAR2(2)", maxLength: 2, nullable: true),
+                    CNA_GRUPO = table.Column<string>(type: "VARCHAR2(1)", maxLength: 1, nullable: true),
+                    CNA_DIVISA = table.Column<string>(type: "VARCHAR2(2)", maxLength: 2, nullable: true),
+                    CNA_ATIVID = table.Column<string>(type: "VARCHAR2(8)", maxLength: 8, nullable: true),
+                    CNA_CAPNCM = table.Column<string>(type: "VARCHAR2(5)", maxLength: 5, nullable: true),
+                    CNA_SECAO = table.Column<string>(type: "VARCHAR2(1)", maxLength: 1, nullable: true),
+                    CNA_CLASSE = table.Column<string>(type: "VARCHAR2(2)", maxLength: 2, nullable: true),
+                    CNA_DATCRI = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false),
+                    CNA_DATALT = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
+                    CNA_PRGCRI = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
+                    CNA_USUCRI = table.Column<int>(type: "NUMBER(10)", nullable: false),
+                    CNA_PRGALT = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: true),
+                    CNA_USUALT = table.Column<int>(type: "NUMBER(10)", nullable: true),
+                    CNA_USUBDD = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TMS_CNAE", x => x.CNA_CNAE);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TMS_PESSOA",
                 columns: table => new
                 {
@@ -38,7 +65,7 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     PES_DATALT = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
                     PES_PRGCRI = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
                     PES_USUCRI = table.Column<int>(type: "NUMBER(10)", nullable: false),
-                    PES_PRGALT = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
+                    PES_PRGALT = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: true),
                     PES_USUALT = table.Column<int>(type: "NUMBER(10)", nullable: true),
                     PES_USUBDD = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
                     SYS_REVISA = table.Column<int>(type: "NUMBER(10)", nullable: false)
@@ -46,6 +73,11 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TMS_PESSOA", x => x.PES_IDENTI);
+                    table.ForeignKey(
+                        name: "FK_PES_CNA_CNAE",
+                        column: x => x.PES_CNA_CNAE,
+                        principalTable: "TMS_CNAE",
+                        principalColumn: "CNA_CNAE");
                 });
 
             migrationBuilder.CreateTable(
@@ -84,11 +116,13 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     EDE_HOFINA = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
                     EDE_DATCRI = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false),
                     EDE_DATALT = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
                     EDE_PRGCRI = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
                     EDE_USUCRI = table.Column<int>(type: "NUMBER(10)", nullable: false),
                     EDE_PRGALT = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
                     EDE_USUALT = table.Column<int>(type: "NUMBER(10)", nullable: true),
-                    EDE_USUBDD = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false)
+                    EDE_USUBDD = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
+                    SysRevisa = table.Column<int>(type: "NUMBER(10)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -101,9 +135,14 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ENDERE_EDE_PES_IDENTI",
+                name: "IX_TMS_ENDERE_EDE_PES_IDENTI",
                 table: "TMS_ENDERE",
                 column: "EDE_PES_IDENTI");
+
+            migrationBuilder.CreateIndex(
+                name: "FK_TMS_CNAE_CNA_CNAE",
+                table: "TMS_PESSOA",
+                column: "PES_CNA_CNAE");
 
             migrationBuilder.DropSequence(
                 name: "SQ_TMS_ENDERE");
@@ -120,6 +159,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
 
             migrationBuilder.DropTable(
                 name: "TMS_PESSOA");
+
+            migrationBuilder.DropTable(
+                name: "TMS_CNAE");
 
             migrationBuilder.DropSequence(
                 name: "SEQ_ENDERE");

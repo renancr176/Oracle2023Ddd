@@ -20,6 +20,7 @@ public static class TmsDb
         #region Repositories
 
         services.AddScoped<IAddressRepository, AddressRepository>();
+        services.AddScoped<ICnaeRepository, CnaeRepository>();
         services.AddScoped<IPersonRepository, PersonRepository>();
 
         #endregion

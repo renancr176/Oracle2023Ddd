@@ -23,8 +23,9 @@ public class TmsDbContext : DbContext, IUnitOfWork
 
     #region DbSets
 
-    public DbSet<Person> People { get; set; }
     public DbSet<Address> Addresses { get; set; }
+    public DbSet<Cnae> Cnaes { get; set; }
+    public DbSet<Person> People { get; set; }
 
     #endregion
 
@@ -51,8 +52,9 @@ public class TmsDbContext : DbContext, IUnitOfWork
 
         #region Mappings
 
-        builder.ApplyConfiguration(new PersonMapping());
         builder.ApplyConfiguration(new AddressMapping());
+        builder.ApplyConfiguration(new CnaeMapping());
+        builder.ApplyConfiguration(new PersonMapping());
 
         #endregion
     }

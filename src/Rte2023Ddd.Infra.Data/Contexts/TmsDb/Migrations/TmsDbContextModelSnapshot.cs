@@ -93,6 +93,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("EDE_USUCRI");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TIMESTAMP(7)");
+
                     b.Property<string>("District")
                         .HasMaxLength(35)
                         .HasColumnType("VARCHAR2")
@@ -163,6 +166,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnType("VARCHAR2")
                         .HasColumnName("EDE_COMPLE");
 
+                    b.Property<int?>("SysRevisa")
+                        .HasColumnType("NUMBER(10)");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(5)
@@ -210,10 +216,101 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdPerson")
-                        .HasDatabaseName("IX_ENDERE_EDE_PES_IDENTI");
+                    b.HasIndex("IdPerson");
 
                     b.ToTable("TMS_ENDERE", (string)null);
+                });
+
+            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Cnae", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(8)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_CNAE")
+                        .HasColumnOrder(1);
+
+                    b.Property<string>("ChapterNcm")
+                        .HasMaxLength(5)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_CAPNCM");
+
+                    b.Property<string>("Class")
+                        .HasMaxLength(2)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_CLASSE");
+
+                    b.Property<string>("CodeParent")
+                        .HasMaxLength(8)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_RELAC");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("CNA_DATCRI");
+
+                    b.Property<string>("CreatorProgram")
+                        .IsRequired()
+                        .HasMaxLength(35)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_PRGCRI");
+
+                    b.Property<int>("CreatorUser")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("CNA_USUCRI");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_DESCRI");
+
+                    b.Property<string>("Division")
+                        .HasMaxLength(2)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_DIVISA");
+
+                    b.Property<string>("Group")
+                        .HasMaxLength(1)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_GRUPO");
+
+                    b.Property<string>("IdActivity")
+                        .HasMaxLength(8)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_ATIVID");
+
+                    b.Property<string>("Section")
+                        .HasMaxLength(1)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_SECAO");
+
+                    b.Property<string>("SubClass")
+                        .HasMaxLength(2)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_SUBCLA");
+
+                    b.Property<string>("UpdateProgram")
+                        .HasMaxLength(35)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_PRGALT");
+
+                    b.Property<int?>("UpdateUser")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("CNA_USUALT");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("CNA_DATALT");
+
+                    b.Property<string>("UserBdd")
+                        .IsRequired()
+                        .HasMaxLength(35)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("CNA_USUBDD");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TMS_CNAE", (string)null);
                 });
 
             modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Person", b =>
@@ -224,11 +321,6 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnName("PES_IDENTI");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Cnae")
-                        .HasMaxLength(8)
-                        .HasColumnType("VARCHAR2")
-                        .HasColumnName("PES_CNA_CNAE");
 
                     b.Property<string>("CnaeDescription")
                         .HasMaxLength(255)
@@ -259,6 +351,11 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasMaxLength(65)
                         .HasColumnType("NVARCHAR2(65)")
                         .HasColumnName("PES_NOMFAN");
+
+                    b.Property<string>("IdCnae")
+                        .HasMaxLength(8)
+                        .HasColumnType("VARCHAR2")
+                        .HasColumnName("PES_CNA_CNAE");
 
                     b.Property<string>("ReductedDescription")
                         .HasMaxLength(35)
@@ -293,7 +390,6 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnName("PES_TIPPES");
 
                     b.Property<string>("UpdateProgram")
-                        .IsRequired()
                         .HasMaxLength(35)
                         .HasColumnType("VARCHAR2")
                         .HasColumnName("PES_PRGALT");
@@ -314,6 +410,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdCnae")
+                        .HasDatabaseName("FK_TMS_CNAE_CNA_CNAE");
+
                     b.ToTable("TMS_PESSOA", (string)null);
                 });
 
@@ -325,6 +424,21 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasConstraintName("FK_EDE_PES_IDENTI");
 
                     b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Person", b =>
+                {
+                    b.HasOne("Rte2023Ddd.Domain.TmsContext.Entities.Cnae", "Cnae")
+                        .WithMany("People")
+                        .HasForeignKey("IdCnae")
+                        .HasConstraintName("FK_PES_CNA_CNAE");
+
+                    b.Navigation("Cnae");
+                });
+
+            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Cnae", b =>
+                {
+                    b.Navigation("People");
                 });
 
             modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Person", b =>
