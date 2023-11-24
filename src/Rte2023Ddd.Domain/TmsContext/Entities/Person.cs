@@ -32,7 +32,7 @@ public class Person : EntityAutoIncrementId
 
     public Cnae Cnae { get; set; }
     public ICollection<Address> Addresses { get; set; }
-    //public Customer Customer { get; set; }
+    public ICollection<Customer> Customers { get; set; }
 
     #endregion
 }

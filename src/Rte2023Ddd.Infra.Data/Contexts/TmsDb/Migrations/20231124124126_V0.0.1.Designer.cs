@@ -12,7 +12,7 @@ using Rte2023Ddd.Infra.Data.Contexts.TmsDb;
 namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
 {
     [DbContext(typeof(TmsDbContext))]
-    [Migration("20231123185540_V0.0.1")]
+    [Migration("20231124124126_V0.0.1")]
     partial class V001
     {
         /// <inheritdoc />
@@ -96,9 +96,6 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("EDE_USUCRI");
 
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("TIMESTAMP(7)");
-
                     b.Property<string>("District")
                         .HasMaxLength(35)
                         .HasColumnType("VARCHAR2")
@@ -168,9 +165,6 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasMaxLength(35)
                         .HasColumnType("VARCHAR2")
                         .HasColumnName("EDE_COMPLE");
-
-                    b.Property<int?>("SysRevisa")
-                        .HasColumnType("NUMBER(10)");
 
                     b.Property<string>("Type")
                         .IsRequired()

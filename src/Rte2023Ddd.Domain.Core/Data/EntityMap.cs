@@ -13,12 +13,12 @@ public abstract class EntityMap<TEntity> : IEntityTypeConfiguration<TEntity> whe
         builder.Property(entity => entity.Id)
             .HasColumnOrder(1);
 
-        //builder.Property(entity => entity.CreatedAt)
-        //    .IsRequired();
+        builder.Property(entity => entity.CreatedAt)
+            .IsRequired();
 
         builder.Ignore(entity => entity.Notifications);
 
-        //builder.HasQueryFilter(entity => !entity.DeletedAt.HasValue);
+        builder.HasQueryFilter(entity => !entity.DeletedAt.HasValue);
 
         builder.Ignore(e => e.CreatedAt);
         builder.Ignore(e => e.UpdatedAt);
@@ -39,5 +39,10 @@ public abstract class EntityAutoIncrementIdMap<TEntity> : IEntityTypeConfigurati
         builder.Ignore(entity => entity.Notifications);
 
         builder.HasQueryFilter(entity => !entity.DeletedAt.HasValue);
+
+        builder.Ignore(e => e.CreatedAt);
+        builder.Ignore(e => e.UpdatedAt);
+        builder.Ignore(e => e.DeletedAt);
+        builder.Ignore(e => e.SysRevisa);
     }
 }

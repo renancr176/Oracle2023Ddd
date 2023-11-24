@@ -116,13 +116,11 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     EDE_HOFINA = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
                     EDE_DATCRI = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false),
                     EDE_DATALT = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
-                    DeletedAt = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
                     EDE_PRGCRI = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
                     EDE_USUCRI = table.Column<int>(type: "NUMBER(10)", nullable: false),
                     EDE_PRGALT = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
                     EDE_USUALT = table.Column<int>(type: "NUMBER(10)", nullable: true),
-                    EDE_USUBDD = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false),
-                    SysRevisa = table.Column<int>(type: "NUMBER(10)", nullable: true)
+                    EDE_USUBDD = table.Column<string>(type: "VARCHAR2(35)", maxLength: 35, nullable: false)
                 },
                 constraints: table =>
                 {

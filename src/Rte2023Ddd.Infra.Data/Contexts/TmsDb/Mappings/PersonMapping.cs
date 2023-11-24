@@ -141,6 +141,10 @@ public class PersonMapping : EntityAutoIncrementIdMap<Person>
             .HasForeignKey(e => e.IdPerson)
             .IsRequired(false);
 
+        builder.HasMany(e => e.Customers)
+            .WithOne(e => e.Person)
+            .HasForeignKey(e => e.IdPerson);
+
         #endregion
     }
 }

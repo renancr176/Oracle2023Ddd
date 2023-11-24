@@ -7,6 +7,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
 
 public class CustomerMapping : EntityAutoIncrementIdMap<Customer>
 {
+    public static string _schema = "TMS";
+    public static string _sequenceName = "SEQ_CLIENT";
+
     public override void Configure(EntityTypeBuilder<Customer> builder)
     {
         base.Configure(builder);
@@ -14,7 +17,9 @@ public class CustomerMapping : EntityAutoIncrementIdMap<Customer>
         builder.ToTable("TMS_CLIENT");
         
         builder.Property(e => e.Id)
-            .HasColumnName("CLI_IDENTI");
+            .HasColumnName("CLI_IDENTI")
+            .ValueGeneratedOnAdd()
+            .HasValueGenerator((_, __) => new SequenceValueGenerator(_schema, _sequenceName));
 
         builder.Property(e => e.IdCompany)
             .HasColumnName("CLI_EMP_IDENTI");
@@ -78,12 +83,51 @@ public class CustomerMapping : EntityAutoIncrementIdMap<Customer>
         builder.Property(e => e.RegisterSource)
             .HasColumnName("CLI_ORICAD");
 
+        #region System control columns
+
+        builder.Property(e => e.CreatedAt)
+            .HasColumnName("CLI_DATCRI")
+            .IsRequired();
+
+        builder.Property(e => e.CreatorProgram)
+            .HasColumnName("CLI_PRGCRI")
+            .HasColumnType("VARCHAR2")
+            .HasMaxLength(35)
+            .IsRequired();
+
+        builder.Property(e => e.CreatorUser)
+            .HasColumnName("CLI_USUCRI")
+            .IsRequired();
+
+        builder.Property(e => e.UpdatedAt)
+            .HasColumnName("CLI_DATALT")
+            .IsRequired(false);
+
+        builder.Property(e => e.UpdateProgram)
+            .HasColumnName("CLI_PRGALT")
+            .HasColumnType("VARCHAR2")
+            .HasMaxLength(35)
+            .IsRequired(false);
+
+        builder.Property(e => e.UpdateUser)
+            .HasColumnName("CLI_USUALT")
+            .IsRequired(false);
+
+        builder.Property(e => e.UserBdd)
+            .HasColumnName("CLI_USUBDD")
+            .HasColumnType("VARCHAR2")
+            .HasMaxLength(35)
+            .IsRequired();
+
+        #endregion
+
         #region Relationships
 
-        //builder.HasOne(e => e.Person)
-        //    .WithOne(e => e.Customer)
-        //    .HasForeignKey<Customer>(e => e.IdPerson)
-        //    .IsRequired();
+        builder.HasOne(e => e.Person)
+            .WithMany(e => e.Customers)
+            .HasForeignKey(e => e.IdPerson)
+            .IsRequired()
+            .HasConstraintName("FK_CLI_PES_IDENTI");
 
         #endregion
     }

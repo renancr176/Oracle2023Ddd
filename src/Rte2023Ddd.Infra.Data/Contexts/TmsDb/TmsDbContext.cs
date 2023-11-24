@@ -53,6 +53,7 @@ public class TmsDbContext : DbContext, IUnitOfWork
         #region Mappings
 
         builder.ApplyConfiguration(new AddressMapping());
+        builder.ApplyConfiguration(new CustomerMapping());
         builder.ApplyConfiguration(new CnaeMapping());
         builder.ApplyConfiguration(new PersonMapping());
 

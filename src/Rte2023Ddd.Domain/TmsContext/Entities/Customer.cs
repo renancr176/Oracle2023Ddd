@@ -45,7 +45,6 @@ public class Customer : EntityAutoIncrementId
     public int IdUnit { get; set; }
     public int SectorLogisticId { get; set; }
     public CustomerRegisterSourceEnum RegisterSource { get; set; }
-    public string PersonFilter { get; set; }
 
     #region Relationships
 
