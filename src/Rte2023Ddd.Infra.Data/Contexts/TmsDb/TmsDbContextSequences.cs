@@ -12,10 +12,10 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb
                 .IncrementsBy(1)
                 .HasMax(int.MaxValue);
 
-            //builder.HasSequence<int>(CustomerMapping._sequenceName)
-            //    .StartsAt(1)
-            //    .IncrementsBy(1)
-            //    .HasMax(int.MaxValue);
+            builder.HasSequence<int>(CustomerMapping._sequenceName)
+                .StartsAt(1)
+                .IncrementsBy(1)
+                .HasMax(int.MaxValue);
 
             builder.HasSequence<int>(PersonMapping._sequenceName)
             .StartsAt(1)

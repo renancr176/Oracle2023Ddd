@@ -22,6 +22,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.HasSequence<int>("SEQ_CLIENT")
+                .HasMax(2147483647L);
+
             modelBuilder.HasSequence<int>("SEQ_ENDERE")
                 .HasMax(2147483647L);
 

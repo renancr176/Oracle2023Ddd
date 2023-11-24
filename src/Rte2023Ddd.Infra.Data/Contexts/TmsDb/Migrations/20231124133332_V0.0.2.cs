@@ -11,6 +11,10 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateSequence<int>(
+                name: "SEQ_CLIENT",
+                maxValue: 2147483647L);
+
             migrationBuilder.CreateTable(
                 name: "TMS_CLIENT",
                 columns: table => new
@@ -70,6 +74,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
         {
             migrationBuilder.DropTable(
                 name: "TMS_CLIENT");
+
+            migrationBuilder.DropSequence(
+                name: "SEQ_CLIENT");
         }
     }
 }

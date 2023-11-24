@@ -12,7 +12,7 @@ using Rte2023Ddd.Infra.Data.Contexts.TmsDb;
 namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
 {
     [DbContext(typeof(TmsDbContext))]
-    [Migration("20231124132635_V0.0.2")]
+    [Migration("20231124133332_V0.0.2")]
     partial class V002
     {
         /// <inheritdoc />
@@ -24,6 +24,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.HasSequence<int>("SEQ_CLIENT")
+                .HasMax(2147483647L);
 
             modelBuilder.HasSequence<int>("SEQ_ENDERE")
                 .HasMax(2147483647L);
