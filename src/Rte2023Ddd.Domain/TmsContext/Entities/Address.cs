@@ -46,4 +46,45 @@ public class Address : EntityAutoIncrementId
     public Person Person { get; set; }
 
     #endregion
+
+    public Address()
+    {
+    }
+
+    public Address(string type, DateTime beginningDate, DateTime? endingDate, string cep, string? typeAddress,
+        string streetName, string? number, string? supplement, string? district, string? city, string? ibgeCity,
+        string unitFederationCode, string? state, int? ibgeUf, string? country, int? ibgeCountry, string activeDb,
+        int? idPerson, string origin, string changedDb, string countryCode, int cityId, int? parentId,
+        string? redispatchDescription, DateTime? windowDeliveryBegin, DateTime? windowDeliveryFinal,
+        DateTime? restrictWindowDeliveryBegin, DateTime? restrictWindowDeliveryFinal)
+    {
+        Type = type;
+        BeginningDate = beginningDate;
+        EndingDate = endingDate;
+        Cep = cep;
+        TypeAddress = typeAddress;
+        StreetName = streetName;
+        Number = number;
+        Supplement = supplement;
+        District = district;
+        City = city;
+        IbgeCity = ibgeCity;
+        UnitFederationCode = unitFederationCode;
+        State = state;
+        IbgeUf = ibgeUf;
+        Country = country;
+        IbgeCountry = ibgeCountry;
+        ActiveDb = activeDb;
+        IdPerson = idPerson;
+        Origin = origin;
+        ChangedDb = changedDb;
+        CountryCode = countryCode;
+        CityId = cityId;
+        ParentId = parentId;
+        RedispatchDescription = redispatchDescription;
+        WindowDeliveryBegin = windowDeliveryBegin;
+        WindowDeliveryFinal = windowDeliveryFinal;
+        RestrictWindowDeliveryBegin = restrictWindowDeliveryBegin;
+        RestrictWindowDeliveryFinal = restrictWindowDeliveryFinal;
+    }
 }

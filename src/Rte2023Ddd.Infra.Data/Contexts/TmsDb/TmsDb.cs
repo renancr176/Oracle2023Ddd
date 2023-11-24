@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Rte2023Ddd.Domain.TmsContext.Interfaces.Repositories;
 using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Repositories;
+using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Seeders;
+using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Seeders.Interfaces;
 
 namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb;
 
@@ -21,13 +23,14 @@ public static class TmsDb
 
         services.AddScoped<IAddressRepository, AddressRepository>();
         services.AddScoped<ICnaeRepository, CnaeRepository>();
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<IPersonRepository, PersonRepository>();
 
         #endregion
 
         #region Seeders
 
-        //services.AddScoped<ISomeSeed, SomeSeed>();
+        services.AddScoped<ICaneSeeder, CaneSeeder>();
 
         #endregion
     }
@@ -41,7 +44,7 @@ public static class TmsDb
 
         Task.Run(async () =>
         {
-            //await serviceProvider.GetService<ISomeSeed>().SeedAsync();
+            await serviceProvider.GetService<ICaneSeeder>().SeedAsync();
         }).Wait();
 
         #endregion

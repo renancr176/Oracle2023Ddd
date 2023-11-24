@@ -20,7 +20,22 @@ public class Cnae : EntityStringId
 
     #endregion
 
-    public Cnae(string id) : base(id)
+    public Cnae()
     {
+    }
+
+    public Cnae(string id, string? codeParent, string description, string? subClass, string? group, string? division,
+        string? idActivity, string? chapterNcm, string? section, string @class)
+        : base(id)
+    {
+        CodeParent = codeParent;
+        Description = description;
+        SubClass = subClass;
+        Group = group;
+        Division = division;
+        IdActivity = idActivity;
+        ChapterNcm = chapterNcm;
+        Section = section;
+        Class = @class;
     }
 }

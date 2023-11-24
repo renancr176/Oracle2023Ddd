@@ -51,4 +51,36 @@ public class Customer : EntityAutoIncrementId
     public Person Person { get; set; }
 
     #endregion
+
+    public Customer()
+    {
+    }
+
+    public Customer(int idCompany, string commercialClassification, string taxpayerType, string establishmentType,
+        string taxpayerClassificationSystem, DateTime insertDate, string fiscalStatus, string activeDb, int idPerson,
+        string? situationWsDb, DateTime searchDateWs, string situationDescriptionWs, string customerClassification,
+        int idUnitLinked, int idTaxZone, int addressIdMain, string externalCode, int idUnit, int sectorLogisticId,
+        CustomerRegisterSourceEnum registerSource)
+    {
+        IdCompany = idCompany;
+        CommercialClassification = commercialClassification;
+        TaxpayerType = taxpayerType;
+        EstablishmentType = establishmentType;
+        TaxpayerClassificationSystem = taxpayerClassificationSystem;
+        InsertDate = insertDate;
+        FiscalStatus = fiscalStatus;
+        ActiveDb = activeDb;
+        IdPerson = idPerson;
+        SituationWSDb = situationWsDb;
+        SearchDateWS = searchDateWs;
+        SituationDescriptionWS = situationDescriptionWs;
+        CustomerClassification = customerClassification;
+        IdUnitLinked = idUnitLinked;
+        IdTaxZone = idTaxZone;
+        AddressIdMain = addressIdMain;
+        ExternalCode = externalCode;
+        IdUnit = idUnit;
+        SectorLogisticId = sectorLogisticId;
+        RegisterSource = registerSource;
+    }
 }

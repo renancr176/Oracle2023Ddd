@@ -35,4 +35,23 @@ public class Person : EntityAutoIncrementId
     public ICollection<Customer> Customers { get; set; }
 
     #endregion
+
+    public Person()
+    {
+    }
+
+    public Person(string typePersonDb, string taxIdRegistration, string stadualIdRegistration,
+        string regionalIdRegistration, string description, string reductedDescription, string fictitiousName,
+        string idCnae, string cnaeDescription)
+    {
+        TypePersonDb = typePersonDb;
+        TaxIdRegistration = taxIdRegistration;
+        StadualIdRegistration = stadualIdRegistration;
+        RegionalIdRegistration = regionalIdRegistration;
+        Description = description;
+        ReductedDescription = reductedDescription;
+        FictitiousName = fictitiousName;
+        IdCnae = idCnae;
+        CnaeDescription = cnaeDescription;
+    }
 }

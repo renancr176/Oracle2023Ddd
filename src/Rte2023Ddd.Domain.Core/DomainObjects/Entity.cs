@@ -99,7 +99,7 @@ public abstract class EntityStringId : Entity
         Id = id;
     }
 
-    protected EntityStringId()
+    public EntityStringId()
     {
     }
 }
