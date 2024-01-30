@@ -1,19 +1,14 @@
-﻿using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Rte2023Ddd.Domain.Core.Enums;
-using Rte2023Ddd.Services.Api.Middlewares;
-using System.ComponentModel;
-using System.Globalization;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Text.Json.Serialization;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
-using Rte2023Ddd.Infra.CrossCutting.IoC;
-using Rte2023Ddd.Domain.Core.Extensions;
+using Microsoft.Extensions.Options;
+using Oracle2023Ddd.Infra.CrossCutting.IoC;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb;
+using Oracle2023Ddd.Services.Api.Middlewares;
 
-namespace Rte2023Ddd.Services.Api;
+namespace Oracle2023Ddd.Services.Api;
 
 public class StartupTests
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
 
-namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb
+namespace Oracle2023Ddd.Infra.Data.Contexts.TmsDb
 {
     public static class TmsDbContextSequences
     {

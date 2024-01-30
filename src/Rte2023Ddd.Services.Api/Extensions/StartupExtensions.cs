@@ -1,4 +1,4 @@
-﻿namespace Rte2023Ddd.Services.Api.Extensions;
+﻿namespace Oracle2023Ddd.Services.Api.Extensions;
 
 public static class StartupExtensions
 {

@@ -1,6 +1,6 @@
 ## Banco de dados
 
-Abra o "Package Manager Console" e selecione o projeto "Rte2023Ddd.Infra.Data" como opção do "Default project"
+Abra o "Package Manager Console" e selecione o projeto "Oracle2023Ddd.Infra.Data" como opção do "Default project"
 
 Comando para gerar uma nova migration
 ```bash

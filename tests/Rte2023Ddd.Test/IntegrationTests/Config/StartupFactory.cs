@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace Rte2023Ddd.Test.IntegrationTests.Config;
+namespace Oracle2023Ddd.Test.IntegrationTests.Config;
 
 public class StartupFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
 {

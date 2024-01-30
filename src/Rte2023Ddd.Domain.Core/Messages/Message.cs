@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Rte2023Ddd.Domain.Core.Messages;
+namespace Oracle2023Ddd.Domain.Core.Messages;
 
 public abstract class Message
 {

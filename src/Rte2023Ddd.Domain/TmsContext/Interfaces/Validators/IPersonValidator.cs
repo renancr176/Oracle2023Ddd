@@ -1,7 +1,7 @@
-﻿using Rte2023Ddd.Domain.Core.DomainObjects;
-using Rte2023Ddd.Domain.TmsContext.Entities;
+﻿using Oracle2023Ddd.Domain.Core.DomainObjects;
+using Oracle2023Ddd.Domain.TmsContext.Entities;
 
-namespace Rte2023Ddd.Domain.TmsContext.Interfaces.Validators;
+namespace Oracle2023Ddd.Domain.TmsContext.Interfaces.Validators;
 
 public interface IPersonValidator : IEntityValidator<Person>
 {

@@ -1,7 +1,7 @@
-﻿using Rte2023Ddd.Domain.Core.Attributes;
-using System.Reflection;
+﻿using System.Reflection;
+using Oracle2023Ddd.Domain.Core.Attributes;
 
-namespace Rte2023Ddd.Domain.Core.Extensions;
+namespace Oracle2023Ddd.Domain.Core.Extensions;
 
 public static class EnumExtensions
 {

@@ -1,10 +1,10 @@
-﻿using MediatR;
+﻿using System.Security.Claims;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Rte2023Ddd.Domain.Core.Messages.CommonMessages.Notifications;
-using Rte2023Ddd.Services.Api.Models.Responses;
-using System.Security.Claims;
+using Oracle2023Ddd.Domain.Core.Messages.CommonMessages.Notifications;
+using Oracle2023Ddd.Services.Api.Models.Responses;
 
-namespace Rte2023Ddd.Services.Api.Controllers;
+namespace Oracle2023Ddd.Services.Api.Controllers;
 
 public abstract class BaseController : Controller
 {

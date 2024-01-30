@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb;
 
 #nullable disable
 
-namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
+namespace Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
 {
     [DbContext(typeof(TmsDbContext))]
     partial class TmsDbContextModelSnapshot : ModelSnapshot
@@ -31,7 +31,7 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
             modelBuilder.HasSequence<int>("SEQ_PESSOA")
                 .HasMax(2147483647L);
 
-            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Address", b =>
+            modelBuilder.Entity("Oracle2023Ddd.Domain.TmsContext.Entities.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -218,7 +218,7 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     b.ToTable("TMS_ENDERE", (string)null);
                 });
 
-            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Cnae", b =>
+            modelBuilder.Entity("Oracle2023Ddd.Domain.TmsContext.Entities.Cnae", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(8)
@@ -310,7 +310,7 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     b.ToTable("TMS_CNAE", (string)null);
                 });
 
-            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Customer", b =>
+            modelBuilder.Entity("Oracle2023Ddd.Domain.TmsContext.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -324,12 +324,11 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("CLI_ATIVO");
 
-                    b.Property<int>("AddressIdMain")
+                    b.Property<int?>("AddressIdMain")
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("CLI_EDE_IDENTI_PRINCI");
 
                     b.Property<string>("CommercialClassification")
-                        .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("CLI_CLACOM");
 
@@ -358,7 +357,6 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnName("CLI_ESPEST");
 
                     b.Property<string>("ExternalCode")
-                        .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("CLI_CODEXT");
 
@@ -379,11 +377,11 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("CLI_ZTB_IDENTI");
 
-                    b.Property<int>("IdUnit")
+                    b.Property<int?>("IdUnit")
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("CLI_UNI_IDENTI");
 
-                    b.Property<int>("IdUnitLinked")
+                    b.Property<int?>("IdUnitLinked")
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("CLI_UNI_IDENTI_VINCUL");
 
@@ -395,11 +393,15 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("CLI_ORICAD");
 
-                    b.Property<DateTime>("SearchDateWS")
+                    b.Property<string>("RegisterSourceDb")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)");
+
+                    b.Property<DateTime?>("SearchDateWS")
                         .HasColumnType("TIMESTAMP(7)")
                         .HasColumnName("CLI_DATCON");
 
-                    b.Property<int>("SectorLogisticId")
+                    b.Property<int?>("SectorLogisticId")
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("CLI_CLG_IDENTI");
 
@@ -448,7 +450,7 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     b.ToTable("TMS_CLIENT", (string)null);
                 });
 
-            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Person", b =>
+            modelBuilder.Entity("Oracle2023Ddd.Domain.TmsContext.Entities.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -551,9 +553,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     b.ToTable("TMS_PESSOA", (string)null);
                 });
 
-            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Address", b =>
+            modelBuilder.Entity("Oracle2023Ddd.Domain.TmsContext.Entities.Address", b =>
                 {
-                    b.HasOne("Rte2023Ddd.Domain.TmsContext.Entities.Person", "Person")
+                    b.HasOne("Oracle2023Ddd.Domain.TmsContext.Entities.Person", "Person")
                         .WithMany("Addresses")
                         .HasForeignKey("IdPerson")
                         .HasConstraintName("FK_EDE_PES_IDENTI");
@@ -561,9 +563,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Customer", b =>
+            modelBuilder.Entity("Oracle2023Ddd.Domain.TmsContext.Entities.Customer", b =>
                 {
-                    b.HasOne("Rte2023Ddd.Domain.TmsContext.Entities.Person", "Person")
+                    b.HasOne("Oracle2023Ddd.Domain.TmsContext.Entities.Person", "Person")
                         .WithMany("Customers")
                         .HasForeignKey("IdPerson")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -573,9 +575,9 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Person", b =>
+            modelBuilder.Entity("Oracle2023Ddd.Domain.TmsContext.Entities.Person", b =>
                 {
-                    b.HasOne("Rte2023Ddd.Domain.TmsContext.Entities.Cnae", "Cnae")
+                    b.HasOne("Oracle2023Ddd.Domain.TmsContext.Entities.Cnae", "Cnae")
                         .WithMany("People")
                         .HasForeignKey("IdCnae")
                         .HasConstraintName("FK_PES_CNA_CNAE");
@@ -583,12 +585,12 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                     b.Navigation("Cnae");
                 });
 
-            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Cnae", b =>
+            modelBuilder.Entity("Oracle2023Ddd.Domain.TmsContext.Entities.Cnae", b =>
                 {
                     b.Navigation("People");
                 });
 
-            modelBuilder.Entity("Rte2023Ddd.Domain.TmsContext.Entities.Person", b =>
+            modelBuilder.Entity("Oracle2023Ddd.Domain.TmsContext.Entities.Person", b =>
                 {
                     b.Navigation("Addresses");
 

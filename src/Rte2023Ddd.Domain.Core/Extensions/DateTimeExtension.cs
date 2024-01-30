@@ -1,4 +1,4 @@
-﻿namespace Rte2023Ddd.Domain.Core.Extensions;
+﻿namespace Oracle2023Ddd.Domain.Core.Extensions;
 
 public static class DateTimeExtension
 {

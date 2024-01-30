@@ -1,12 +1,13 @@
-﻿using Rte2023Ddd.Domain.Core.DomainObjects;
-using Rte2023Ddd.Domain.TmsContext.Enums;
+﻿using Oracle2023Ddd.Domain.Core.DomainObjects;
+using Oracle2023Ddd.Domain.Core.Extensions;
+using Oracle2023Ddd.Domain.TmsContext.Enums;
 
-namespace Rte2023Ddd.Domain.TmsContext.Entities;
+namespace Oracle2023Ddd.Domain.TmsContext.Entities;
 
 public class Customer : EntityAutoIncrementId
 {
     public int IdCompany { get; set; }
-    public string CommercialClassification { get; set; }
+    public string? CommercialClassification { get; set; }
     public string TaxpayerType { get; set; }
     public string EstablishmentType { get; set; }
     public string TaxpayerClassificationSystem { get; set; }
@@ -35,16 +36,28 @@ public class Customer : EntityAutoIncrementId
         }
     }
     public string? SituationWSDb { get; private set; }
-    public DateTime SearchDateWS { get; set; }
+    public DateTime? SearchDateWS { get; set; }
     public string SituationDescriptionWS { get; set; }
     public string CustomerClassification { get; set; }
-    public int IdUnitLinked { get; set; }
+    public int? IdUnitLinked { get; set; }
     public int IdTaxZone { get; set; }
-    public int AddressIdMain { get; set; }
-    public string ExternalCode { get; set; }
-    public int IdUnit { get; set; }
-    public int SectorLogisticId { get; set; }
-    public CustomerRegisterSourceEnum RegisterSource { get; set; }
+    public int? AddressIdMain { get; set; }
+    public string? ExternalCode { get; set; }
+    public int? IdUnit { get; set; }
+    public int? SectorLogisticId { get; set; }
+    public CustomerRegisterSourceEnum RegisterSource
+    {
+        get
+        {
+            return RegisterSourceDb.DbValueToEnum<CustomerRegisterSourceEnum>();
+        }
+        set
+        {
+            RegisterSourceDb = value.ToDbValue();
+        }
+    }
+
+    public string RegisterSourceDb { get; private set; } = CustomerRegisterSourceEnum.TMS.ToDbValue();
 
     #region Relationships
 

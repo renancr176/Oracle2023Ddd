@@ -19,19 +19,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 -
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FF6F053C-A610-4578-9577-95CE7EE58ED8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rte2023Ddd.Services.Api", "src\Rte2023Ddd.Services.Api\Rte2023Ddd.Services.Api.csproj", "{7FCCC1A1-DD50-4046-ADDF-FE21B3F1DC95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle2023Ddd.Services.Api", "src\Rte2023Ddd.Services.Api\Oracle2023Ddd.Services.Api.csproj", "{7FCCC1A1-DD50-4046-ADDF-FE21B3F1DC95}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rte2023Ddd.Domain.Core", "src\Rte2023Ddd.Domain.Core\Rte2023Ddd.Domain.Core.csproj", "{1D50E54E-717C-4713-AFB4-C52DD8AE5AE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle2023Ddd.Domain.Core", "src\Rte2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj", "{1D50E54E-717C-4713-AFB4-C52DD8AE5AE7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rte2023Ddd.Domain", "src\Rte2023Ddd.Domain\Rte2023Ddd.Domain.csproj", "{902B5505-4398-45F7-9061-7465CA14160A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle2023Ddd.Domain", "src\Rte2023Ddd.Domain\Oracle2023Ddd.Domain.csproj", "{902B5505-4398-45F7-9061-7465CA14160A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rte2023Ddd.Infra.CrossCutting.IoC", "src\Rte2023Ddd.Infra.CrossCutting.IoC\Rte2023Ddd.Infra.CrossCutting.IoC.csproj", "{129937B9-E9F4-457F-B739-8D0DC6DB7268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle2023Ddd.Infra.CrossCutting.IoC", "src\Rte2023Ddd.Infra.CrossCutting.IoC\Oracle2023Ddd.Infra.CrossCutting.IoC.csproj", "{129937B9-E9F4-457F-B739-8D0DC6DB7268}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rte2023Ddd.Infra.Data", "src\Rte2023Ddd.Infra.Data\Rte2023Ddd.Infra.Data.csproj", "{B756B027-5859-4E7A-B1ED-FDD1C5683F18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle2023Ddd.Infra.Data", "src\Rte2023Ddd.Infra.Data\Oracle2023Ddd.Infra.Data.csproj", "{B756B027-5859-4E7A-B1ED-FDD1C5683F18}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rte2023Ddd.Application", "src\Rte2023Ddd.Application\Rte2023Ddd.Application.csproj", "{B42BC0A6-3E53-4893-B6AB-914A8A9FC376}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle2023Ddd.Application", "src\Rte2023Ddd.Application\Oracle2023Ddd.Application.csproj", "{B42BC0A6-3E53-4893-B6AB-914A8A9FC376}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rte2023Ddd.Test", "tests\Rte2023Ddd.Test\Rte2023Ddd.Test.csproj", "{A41693F9-FBEB-4C96-81EE-52082846D8AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oracle2023Ddd.Test", "tests\Rte2023Ddd.Test\Oracle2023Ddd.Test.csproj", "{A41693F9-FBEB-4C96-81EE-52082846D8AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

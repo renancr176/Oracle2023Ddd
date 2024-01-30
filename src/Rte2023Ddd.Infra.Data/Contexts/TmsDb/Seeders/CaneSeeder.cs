@@ -1,9 +1,9 @@
-﻿using Rte2023Ddd.Domain.TmsContext.Entities;
-using Rte2023Ddd.Domain.TmsContext.Interfaces.Repositories;
-using Rte2023Ddd.Domain.TmsContext.Interfaces.Validators;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Seeders.Interfaces;
+﻿using Oracle2023Ddd.Domain.TmsContext.Entities;
+using Oracle2023Ddd.Domain.TmsContext.Interfaces.Repositories;
+using Oracle2023Ddd.Domain.TmsContext.Interfaces.Validators;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Seeders.Interfaces;
 
-namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Seeders;
+namespace Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Seeders;
 
 public class CaneSeeder : ICaneSeeder
 {

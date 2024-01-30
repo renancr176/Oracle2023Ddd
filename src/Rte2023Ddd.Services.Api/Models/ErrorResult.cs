@@ -1,4 +1,4 @@
-﻿namespace Rte2023Ddd.Services.Api.Models
+﻿namespace Oracle2023Ddd.Services.Api.Models
 {
     public class ErrorResult
     {

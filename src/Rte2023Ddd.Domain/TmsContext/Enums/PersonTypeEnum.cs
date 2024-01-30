@@ -1,19 +1,19 @@
-﻿using Rte2023Ddd.Domain.Core.Attributes;
+﻿using Oracle2023Ddd.Domain.Core.Attributes;
 
-namespace Rte2023Ddd.Domain.TmsContext.Enums;
+namespace Oracle2023Ddd.Domain.TmsContext.Enums;
 
 public enum PersonTypeEnum
 {
-    [EnumDbStringValueAttribute("")]
+    [EnumDbStringValue("")]
     //[DisplayName("")]
     None,
-    [EnumDbStringValueAttribute("J")]
+    [EnumDbStringValue("J")]
     //[DisplayName("FÍSICA")]
     Legal,
-    [EnumDbStringValueAttribute("F")]
+    [EnumDbStringValue("F")]
     //[DisplayName("JURÍDICA")]
     Natural,
-    [EnumDbStringValueAttribute("E")]
+    [EnumDbStringValue("E")]
     //[DisplayName("ESTRANGEIRO")]
     Foreign 
 }

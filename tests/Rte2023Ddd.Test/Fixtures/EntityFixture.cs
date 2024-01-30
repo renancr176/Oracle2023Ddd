@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using Xunit;
 
-namespace Rte2023Ddd.Test.Fixtures;
+namespace Oracle2023Ddd.Test.Fixtures;
 
 [CollectionDefinition(nameof(EntityColletion))]
 public class EntityColletion : ICollectionFixture<EntityFixture>

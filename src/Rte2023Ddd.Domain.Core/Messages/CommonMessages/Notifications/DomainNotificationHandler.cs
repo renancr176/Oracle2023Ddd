@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Rte2023Ddd.Domain.Core.Messages.CommonMessages.Notifications;
+namespace Oracle2023Ddd.Domain.Core.Messages.CommonMessages.Notifications;
 
 public class DomainNotificationHandler : INotificationHandler<DomainNotification>
 {

@@ -2,12 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
-using Rte2023Ddd.Domain.Core.Data;
-using Rte2023Ddd.Domain.Core.Messages;
-using Rte2023Ddd.Domain.TmsContext.Entities;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
+using Oracle2023Ddd.Domain.Core.Data;
+using Oracle2023Ddd.Domain.Core.Messages;
+using Oracle2023Ddd.Domain.TmsContext.Entities;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
 
-namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb; 
+namespace Oracle2023Ddd.Infra.Data.Contexts.TmsDb; 
 
 public class TmsDbContext : DbContext, IUnitOfWork
 {
@@ -25,6 +25,7 @@ public class TmsDbContext : DbContext, IUnitOfWork
 
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Cnae> Cnaes { get; set; }
+    public DbSet<Customer> Customers { get; set; }
     public DbSet<Person> People { get; set; }
 
     #endregion
@@ -53,8 +54,8 @@ public class TmsDbContext : DbContext, IUnitOfWork
         #region Mappings
 
         builder.ApplyConfiguration(new AddressMapping());
-        builder.ApplyConfiguration(new CustomerMapping());
         builder.ApplyConfiguration(new CnaeMapping());
+        builder.ApplyConfiguration(new CustomerMapping());
         builder.ApplyConfiguration(new PersonMapping());
 
         #endregion

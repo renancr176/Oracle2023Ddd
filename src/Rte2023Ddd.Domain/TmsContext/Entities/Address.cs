@@ -1,6 +1,6 @@
-﻿using Rte2023Ddd.Domain.Core.DomainObjects;
+﻿using Oracle2023Ddd.Domain.Core.DomainObjects;
 
-namespace Rte2023Ddd.Domain.TmsContext.Entities;
+namespace Oracle2023Ddd.Domain.TmsContext.Entities;
 
 public class Address : EntityAutoIncrementId
 {

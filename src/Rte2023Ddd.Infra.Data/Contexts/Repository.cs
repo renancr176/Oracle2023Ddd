@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Rte2023Ddd.Domain.Core.Data;
-using Rte2023Ddd.Domain.Core.DomainObjects;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
+using Oracle2023Ddd.Domain.Core.Data;
+using Oracle2023Ddd.Domain.Core.DomainObjects;
 
-namespace Rte2023Ddd.Infra.Data.Contexts;
+namespace Oracle2023Ddd.Infra.Data.Contexts;
 
 public abstract class Repository<TDbContext, TEntity> : IRepository<TEntity>
     where TDbContext : DbContext, IUnitOfWork

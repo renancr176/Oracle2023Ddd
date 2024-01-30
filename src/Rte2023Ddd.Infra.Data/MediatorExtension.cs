@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Rte2023Ddd.Domain.Core.DomainObjects;
+using Oracle2023Ddd.Domain.Core.DomainObjects;
 
-namespace Rte2023Ddd.Infra.Data;
+namespace Oracle2023Ddd.Infra.Data;
 
 public static class MediatorExtension
 {

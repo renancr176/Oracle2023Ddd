@@ -1,7 +1,7 @@
-﻿using MediatR;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
+using MediatR;
 
-namespace Rte2023Ddd.Domain.Core.Messages;
+namespace Oracle2023Ddd.Domain.Core.Messages;
 
 public abstract class Command<TResponse> : Message, IRequest<TResponse>
 {

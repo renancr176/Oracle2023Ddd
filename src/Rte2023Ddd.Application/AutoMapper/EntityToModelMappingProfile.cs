@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Rte2023Ddd.Application.AutoMapper;
+namespace Oracle2023Ddd.Application.AutoMapper;
 
 public class EntityToModelMappingProfile : Profile
 {

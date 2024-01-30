@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Mvc.Razor;
+﻿using System.Reflection;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using Rte2023Ddd.Services.Api.Filters;
-using Rte2023Ddd.Services.Api.Middlewares;
-using System.Reflection;
-using System.Text.Json.Serialization;
-using Rte2023Ddd.Infra.CrossCutting.IoC;
+using Oracle2023Ddd.Infra.CrossCutting.IoC;
+using Oracle2023Ddd.Services.Api.Filters;
+using Oracle2023Ddd.Services.Api.Middlewares;
 
-namespace Rte2023Ddd.Services.Api;
+namespace Oracle2023Ddd.Services.Api;
 
 public class Startup : IStartup
 {

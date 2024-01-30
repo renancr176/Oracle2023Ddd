@@ -3,7 +3,7 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
 
-namespace Rte2023Ddd.Services.Api.Extensions;
+namespace Oracle2023Ddd.Services.Api.Extensions;
 
 public static class SerilogExtensions
 {

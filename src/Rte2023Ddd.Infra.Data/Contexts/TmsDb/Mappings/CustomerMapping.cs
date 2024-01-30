@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Rte2023Ddd.Domain.Core.Data;
-using Rte2023Ddd.Domain.TmsContext.Entities;
+using Oracle2023Ddd.Domain.Core.Data;
+using Oracle2023Ddd.Domain.TmsContext.Entities;
 
-namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
+namespace Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
 
 public class CustomerMapping : EntityAutoIncrementIdMap<Customer>
 {
@@ -15,7 +15,7 @@ public class CustomerMapping : EntityAutoIncrementIdMap<Customer>
         base.Configure(builder);
 
         builder.ToTable("TMS_CLIENT");
-        
+
         builder.Property(e => e.Id)
             .HasColumnName("CLI_IDENTI")
             .ValueGeneratedOnAdd()
@@ -64,7 +64,7 @@ public class CustomerMapping : EntityAutoIncrementIdMap<Customer>
 
         builder.Property(e => e.IdUnitLinked)
             .HasColumnName("CLI_UNI_IDENTI_VINCUL");
-        
+
         builder.Property(e => e.IdTaxZone)
             .HasColumnName("CLI_ZTB_IDENTI");
 

@@ -1,7 +1,7 @@
 ﻿using Xunit.Abstractions;
 using Xunit.Sdk;
 
-namespace Rte2023Ddd.Test;
+namespace Oracle2023Ddd.Test;
 
 [AttributeUsage(AttributeTargets.Method)]
 public class TestPriorityAttribute : Attribute

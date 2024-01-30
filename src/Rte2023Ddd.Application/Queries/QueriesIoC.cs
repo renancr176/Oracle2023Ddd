@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Rte2023Ddd.Application.Queries;
+namespace Oracle2023Ddd.Application.Queries;
 
 public static class QueriesIoC
 {

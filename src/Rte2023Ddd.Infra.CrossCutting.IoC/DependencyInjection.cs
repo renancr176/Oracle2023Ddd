@@ -1,15 +1,15 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Rte2023Ddd.Application.Commands;
-using Rte2023Ddd.Application.Events;
-using Rte2023Ddd.Application.Queries;
-using Rte2023Ddd.Application.Services;
-using Rte2023Ddd.Domain.Core.Messages.CommonMessages.Notifications;
-using Rte2023Ddd.Domain.TmsContext.Validators;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb;
+using Oracle2023Ddd.Application.Commands;
+using Oracle2023Ddd.Application.Events;
+using Oracle2023Ddd.Application.Queries;
+using Oracle2023Ddd.Application.Services;
+using Oracle2023Ddd.Domain.Core.Messages.CommonMessages.Notifications;
+using Oracle2023Ddd.Domain.TmsContext.Validators;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb;
 
-namespace Rte2023Ddd.Infra.CrossCutting.IoC;
+namespace Oracle2023Ddd.Infra.CrossCutting.IoC;
 
 public static class DependencyInjection
 {

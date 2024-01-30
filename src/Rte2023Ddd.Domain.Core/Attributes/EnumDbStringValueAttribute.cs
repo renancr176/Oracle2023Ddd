@@ -1,4 +1,4 @@
-﻿namespace Rte2023Ddd.Domain.Core.Attributes;
+﻿namespace Oracle2023Ddd.Domain.Core.Attributes;
 
 public class EnumDbStringValueAttribute : Attribute
 {

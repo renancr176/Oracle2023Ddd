@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Rte2023Ddd.Domain.Core.Data;
-using Rte2023Ddd.Domain.TmsContext.Entities;
+using Oracle2023Ddd.Domain.Core.Data;
+using Oracle2023Ddd.Domain.TmsContext.Entities;
 
-namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
+namespace Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Mappings;
 
 public class CnaeMapping : EntityMap<Cnae>
 {

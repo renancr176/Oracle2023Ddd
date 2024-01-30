@@ -1,7 +1,6 @@
-﻿using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Rte2023Ddd.Application.Events;
+namespace Oracle2023Ddd.Application.Events;
 
 public static class EventIoC
 {

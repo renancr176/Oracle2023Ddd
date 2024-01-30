@@ -27,10 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rte2023Ddd.Domain.Core\Rte2023Ddd.Domain.Core.csproj" />
-    <ProjectReference Include="..\Rte2023Ddd.Domain\Rte2023Ddd.Domain.csproj" />
-    <ProjectReference Include="..\Rte2023Ddd.Infra.CrossCutting.IoC\Rte2023Ddd.Infra.CrossCutting.IoC.csproj" />
-    <ProjectReference Include="..\Rte2023Ddd.Infra.Data\Rte2023Ddd.Infra.Data.csproj" />
+    <ProjectReference Include="..\Rte2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj" />
+    <ProjectReference Include="..\Rte2023Ddd.Domain\Oracle2023Ddd.Domain.csproj" />
+    <ProjectReference Include="..\Rte2023Ddd.Infra.CrossCutting.IoC\Oracle2023Ddd.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\Rte2023Ddd.Infra.Data\Oracle2023Ddd.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

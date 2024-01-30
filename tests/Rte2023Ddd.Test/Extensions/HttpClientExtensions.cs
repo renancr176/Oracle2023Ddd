@@ -1,12 +1,12 @@
-﻿using Rte2023Ddd.Domain.Core.Extensions;
-using Newtonsoft.Json;
-using Rte2023Ddd.Domain.Core.Enums;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using Flurl.Util;
+using Newtonsoft.Json;
+using Oracle2023Ddd.Domain.Core.Enums;
+using Oracle2023Ddd.Domain.Core.Extensions;
 
-namespace Rte2023Ddd.Test.Extensions;
+namespace Oracle2023Ddd.Test.Extensions;
 
 public static class HttpClientExtensions
 {

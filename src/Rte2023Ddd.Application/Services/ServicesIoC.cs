@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Rte2023Ddd.Application.Services;
+namespace Oracle2023Ddd.Application.Services;
 
 public static class ServicesIoC
 {

@@ -1,4 +1,4 @@
-﻿namespace Rte2023Ddd.Services.Api.Models.Responses;
+﻿namespace Oracle2023Ddd.Services.Api.Models.Responses;
 
 public class BaseResponseError
 {

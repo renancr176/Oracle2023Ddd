@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 
-namespace Rte2023Ddd.Domain.Core.Data;
+namespace Oracle2023Ddd.Domain.Core.Data;
 
 public class SequenceValueGenerator : ValueGenerator<int>
 {

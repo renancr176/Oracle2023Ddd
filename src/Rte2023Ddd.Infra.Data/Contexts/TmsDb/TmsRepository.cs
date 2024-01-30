@@ -1,6 +1,6 @@
-﻿using Rte2023Ddd.Domain.Core.DomainObjects;
+﻿using Oracle2023Ddd.Domain.Core.DomainObjects;
 
-namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb;
+namespace Oracle2023Ddd.Infra.Data.Contexts.TmsDb;
 
 public abstract class TmsRepository<TEntity> : Repository<TmsDbContext, TEntity>
     where TEntity : Entity

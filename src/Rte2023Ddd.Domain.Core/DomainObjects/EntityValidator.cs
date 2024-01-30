@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Rte2023Ddd.Domain.Core.Data;
+using Oracle2023Ddd.Domain.Core.Data;
 
-namespace Rte2023Ddd.Domain.Core.DomainObjects;
+namespace Oracle2023Ddd.Domain.Core.DomainObjects;
 
 public abstract class EntityValidator<TEntity> : AbstractValidator<TEntity>
     where TEntity : Entity

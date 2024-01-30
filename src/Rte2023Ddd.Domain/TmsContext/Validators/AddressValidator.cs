@@ -1,12 +1,12 @@
-﻿using FluentValidation;
+﻿using System.Globalization;
+using FluentValidation;
 using FluentValidation.Results;
-using Rte2023Ddd.Domain.Core.DomainObjects;
-using Rte2023Ddd.Domain.TmsContext.Entities;
-using Rte2023Ddd.Domain.TmsContext.Interfaces.Repositories;
-using Rte2023Ddd.Domain.TmsContext.Interfaces.Validators;
-using System.Globalization;
+using Oracle2023Ddd.Domain.Core.DomainObjects;
+using Oracle2023Ddd.Domain.TmsContext.Entities;
+using Oracle2023Ddd.Domain.TmsContext.Interfaces.Repositories;
+using Oracle2023Ddd.Domain.TmsContext.Interfaces.Validators;
 
-namespace Rte2023Ddd.Domain.TmsContext.Validators;
+namespace Oracle2023Ddd.Domain.TmsContext.Validators;
 
 public class AddressValidator :
     EntityValidator<Address>,

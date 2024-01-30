@@ -1,7 +1,7 @@
-﻿using Rte2023Ddd.Domain.Core.DomainObjects;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Oracle2023Ddd.Domain.Core.DomainObjects;
 
-namespace Rte2023Ddd.Domain.Core.Data;
+namespace Oracle2023Ddd.Domain.Core.Data;
 
 public interface IRepository<TEntity> : IDisposable
     where TEntity : Entity

@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["src/Rte2023Ddd.Services.Api/Rte2023Ddd.Services.Api.csproj", "src/Rte2023Ddd.Services.Api/"]
-RUN dotnet restore "src/Rte2023Ddd.Services.Api/Rte2023Ddd.Services.Api.csproj"
+COPY ["src/Oracle2023Ddd.Services.Api/Oracle2023Ddd.Services.Api.csproj", "src/Oracle2023Ddd.Services.Api/"]
+RUN dotnet restore "src/Oracle2023Ddd.Services.Api/Oracle2023Ddd.Services.Api.csproj"
 COPY . .
-WORKDIR "/src/src/Rte2023Ddd.Services.Api"
-RUN dotnet build "Rte2023Ddd.Services.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Oracle2023Ddd.Services.Api"
+RUN dotnet build "Oracle2023Ddd.Services.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Rte2023Ddd.Services.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Oracle2023Ddd.Services.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Rte2023Ddd.Services.Api.dll"]
+ENTRYPOINT ["dotnet", "Oracle2023Ddd.Services.Api.dll"]

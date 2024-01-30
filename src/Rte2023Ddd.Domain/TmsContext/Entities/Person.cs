@@ -1,10 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Rte2023Ddd.Domain.Core.DomainObjects;
-using Rte2023Ddd.Domain.Core.Extensions;
-using Rte2023Ddd.Domain.TmsContext.Enums;
-using System.Security.Policy;
+﻿using Oracle2023Ddd.Domain.Core.DomainObjects;
+using Oracle2023Ddd.Domain.Core.Extensions;
+using Oracle2023Ddd.Domain.TmsContext.Enums;
 
-namespace Rte2023Ddd.Domain.TmsContext.Entities;
+namespace Oracle2023Ddd.Domain.TmsContext.Entities;
 
 public class Person : EntityAutoIncrementId
 {

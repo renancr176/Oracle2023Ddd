@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 
-namespace Rte2023Ddd.Domain.Core.DomainObjects;
+namespace Oracle2023Ddd.Domain.Core.DomainObjects;
 
 public interface IEntityValidator<TEntity> : IValidator<TEntity> where TEntity : Entity
 {

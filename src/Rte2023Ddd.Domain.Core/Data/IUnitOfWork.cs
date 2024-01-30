@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Rte2023Ddd.Domain.Core.Data;
+namespace Oracle2023Ddd.Domain.Core.Data;
 
 public interface IUnitOfWork
 {

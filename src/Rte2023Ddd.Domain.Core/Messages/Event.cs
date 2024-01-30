@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Rte2023Ddd.Domain.Core.Messages;
+namespace Oracle2023Ddd.Domain.Core.Messages;
 
 public abstract class Event : Message, INotification
 {

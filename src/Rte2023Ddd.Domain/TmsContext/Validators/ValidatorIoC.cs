@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Rte2023Ddd.Domain.TmsContext.Interfaces.Validators;
+using Oracle2023Ddd.Domain.TmsContext.Interfaces.Validators;
 
-namespace Rte2023Ddd.Domain.TmsContext.Validators;
+namespace Oracle2023Ddd.Domain.TmsContext.Validators;
 
 public static class ValidatorIoC
 {

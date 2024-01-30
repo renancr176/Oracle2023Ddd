@@ -1,14 +1,9 @@
-﻿using Bogus;
-using Microsoft.AspNetCore.Identity;
-using Rte2023Ddd.Domain.Core.Enums;
-using Rte2023Ddd.Services.Api.Models.Responses;
-using Rte2023Ddd.Services.Api;
-using Rte2023Ddd.Test.Extensions;
-using Rte2023Ddd.Test.Fixtures;
+﻿using Oracle2023Ddd.Infra.Data.Contexts.TmsDb;
+using Oracle2023Ddd.Services.Api;
+using Oracle2023Ddd.Test.Fixtures;
 using Xunit;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb;
 
-namespace Rte2023Ddd.Test.IntegrationTests.Config;
+namespace Oracle2023Ddd.Test.IntegrationTests.Config;
 
 [CollectionDefinition(nameof(IntegrationTestsFixtureCollection))]
 public class IntegrationTestsFixtureCollection : ICollectionFixture<IntegrationTestsFixture<StartupTests>> { }

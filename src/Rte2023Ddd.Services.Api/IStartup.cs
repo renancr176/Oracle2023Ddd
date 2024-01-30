@@ -1,4 +1,4 @@
-﻿namespace Rte2023Ddd.Services.Api;
+﻿namespace Oracle2023Ddd.Services.Api;
 
 public interface IStartup
 {

@@ -1,7 +1,6 @@
-﻿using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Rte2023Ddd.Application.Commands;
+namespace Oracle2023Ddd.Application.Commands;
 
 public static class CommandsIoC
 {

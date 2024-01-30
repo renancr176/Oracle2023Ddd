@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Rte2023Ddd.Services.Api.Exceptions;
+namespace Oracle2023Ddd.Services.Api.Exceptions;
 
 public class CustomException : Exception
 {

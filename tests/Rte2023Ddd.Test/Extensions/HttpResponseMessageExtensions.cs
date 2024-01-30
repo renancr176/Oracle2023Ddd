@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Rte2023Ddd.Test.Extensions;
+namespace Oracle2023Ddd.Test.Extensions;
 
 public static class HttpResponseMessageExtensions
 {

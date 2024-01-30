@@ -1,7 +1,7 @@
-﻿using Rte2023Ddd.Domain.Core.Data;
-using Rte2023Ddd.Domain.TmsContext.Entities;
+﻿using Oracle2023Ddd.Domain.Core.Data;
+using Oracle2023Ddd.Domain.TmsContext.Entities;
 
-namespace Rte2023Ddd.Domain.TmsContext.Interfaces.Repositories;
+namespace Oracle2023Ddd.Domain.TmsContext.Interfaces.Repositories;
 
 public interface ICustomerRepository : IRepository<Customer>
 {

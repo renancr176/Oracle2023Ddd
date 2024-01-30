@@ -1,6 +1,6 @@
-﻿using Rte2023Ddd.Domain.Core.Messages;
+﻿using Oracle2023Ddd.Domain.Core.Messages;
 
-namespace Rte2023Ddd.Domain.Core.DomainObjects;
+namespace Oracle2023Ddd.Domain.Core.DomainObjects;
 
 public abstract class Entity
 {

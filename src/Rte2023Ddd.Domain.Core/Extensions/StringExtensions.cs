@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Text;
+using System.Text.RegularExpressions;
 
-namespace Rte2023Ddd.Domain.Core.Extensions;
+namespace Oracle2023Ddd.Domain.Core.Extensions;
 
 public static class StringExtensions
 {

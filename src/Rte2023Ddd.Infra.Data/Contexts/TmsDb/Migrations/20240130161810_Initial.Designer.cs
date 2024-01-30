@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb;
 
 #nullable disable
 
-namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
+namespace Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
 {
     [DbContext(typeof(TmsDbContext))]
-    [Migration("20231110173227_Initial")]
+    [Migration("20240130161810_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -23,6 +23,15 @@ namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.HasSequence<int>("SEQ_CLIENT")
+                .HasMax(2147483647L);
+
+            modelBuilder.HasSequence<int>("SEQ_ENDERE")
+                .HasMax(2147483647L);
+
+            modelBuilder.HasSequence<int>("SEQ_PESSOA")
+                .HasMax(2147483647L);
 #pragma warning restore 612, 618
         }
     }

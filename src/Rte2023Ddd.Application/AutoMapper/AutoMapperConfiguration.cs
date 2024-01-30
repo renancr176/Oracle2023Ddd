@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Rte2023Ddd.Application.AutoMapper;
+namespace Oracle2023Ddd.Application.AutoMapper;
 
 public static class AutoMapperConfiguration
 {

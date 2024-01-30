@@ -1,11 +1,11 @@
-﻿using Rte2023Ddd.Services.Api.Exceptions;
-using Rte2023Ddd.Services.Api.Models;
-using Rte2023Ddd.Services.Api.Models.Responses;
-using Serilog.Context;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
+using Oracle2023Ddd.Services.Api.Exceptions;
+using Oracle2023Ddd.Services.Api.Models;
+using Oracle2023Ddd.Services.Api.Models.Responses;
+using Serilog.Context;
 
-namespace Rte2023Ddd.Services.Api.Middlewares;
+namespace Oracle2023Ddd.Services.Api.Middlewares;
 
 public class ExceptionMiddleware
 {

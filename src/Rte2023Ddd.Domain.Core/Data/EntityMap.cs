@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using Rte2023Ddd.Domain.Core.DomainObjects;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Oracle2023Ddd.Domain.Core.DomainObjects;
 
-namespace Rte2023Ddd.Domain.Core.Data;
+namespace Oracle2023Ddd.Domain.Core.Data;
 
 public abstract class EntityMap<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : Entity
 {

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Rte2023Ddd.Services.Api.Filters;
+namespace Oracle2023Ddd.Services.Api.Filters;
 
 public class SwaggerOperationFilter : IOperationFilter
 {

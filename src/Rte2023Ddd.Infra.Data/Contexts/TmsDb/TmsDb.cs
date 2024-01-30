@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Rte2023Ddd.Domain.TmsContext.Interfaces.Repositories;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Repositories;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Seeders;
-using Rte2023Ddd.Infra.Data.Contexts.TmsDb.Seeders.Interfaces;
+using Oracle2023Ddd.Domain.TmsContext.Interfaces.Repositories;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Repositories;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Seeders;
+using Oracle2023Ddd.Infra.Data.Contexts.TmsDb.Seeders.Interfaces;
 
-namespace Rte2023Ddd.Infra.Data.Contexts.TmsDb;
+namespace Oracle2023Ddd.Infra.Data.Contexts.TmsDb;
 
 public static class TmsDb
 {
