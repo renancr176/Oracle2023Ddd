@@ -7,6 +7,7 @@
     <UserSecretsId>8e3a9eab-84b8-4872-bf01-8d358aa7992b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,10 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rte2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj" />
-    <ProjectReference Include="..\Rte2023Ddd.Domain\Oracle2023Ddd.Domain.csproj" />
-    <ProjectReference Include="..\Rte2023Ddd.Infra.CrossCutting.IoC\Oracle2023Ddd.Infra.CrossCutting.IoC.csproj" />
-    <ProjectReference Include="..\Rte2023Ddd.Infra.Data\Oracle2023Ddd.Infra.Data.csproj" />
+    <ProjectReference Include="..\Oracle2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj" />
+    <ProjectReference Include="..\Oracle2023Ddd.Domain\Oracle2023Ddd.Domain.csproj" />
+    <ProjectReference Include="..\Oracle2023Ddd.Infra.CrossCutting.IoC\Oracle2023Ddd.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\Oracle2023Ddd.Infra.Data\Oracle2023Ddd.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

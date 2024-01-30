@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rte2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj" />
+    <ProjectReference Include="..\Oracle2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj" />
   </ItemGroup>
 
 </Project>

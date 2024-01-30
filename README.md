@@ -1,6 +1,6 @@
-# Rte2023Ddd
+# Oracle2023Ddd
 
-Instalações necessárias:
+InstalaÃ§Ãµes necessÃ¡rias:
 
  - Base de dados Oracle 11g R2 XE 
 	 - [Download](https://www.oracle.com/database/technologies/xe-prior-release-downloads.html)
@@ -9,7 +9,7 @@ Instalações necessárias:
  - DotNet SDK 7
 	 - [Download](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 
-## Configurações
+## ConfiguraÃ§Ãµes
 	
  1. Criar base de dados / schema TMS.
 
@@ -43,9 +43,9 @@ Instalações necessárias:
 		 - `CREATE USER TMSTEST IDENTIFIED BY admin;`
 		 - `GRANT ALL PRIVILEGES TO TMSTEST;`
 
-3. Configurar a conexão do projeto com o banco de dados local para desenvolvimento e tete automatizado.
+3. Configurar a conexÃ£o do projeto com o banco de dados local para desenvolvimento e tete automatizado.
 
-	- No projeto Rte2023Ddd.Services.Api
+	- No projeto Oracle2023Ddd.Services.Api
 		- Alterar o arquivo appsettings.Development.json
 			- Alterar a connection string TMS para:
 				- "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=EX)));User Id=TMS;Password=admin;Validate Connection=true;Max Pool Size=200"

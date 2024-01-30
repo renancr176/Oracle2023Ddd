@@ -28,8 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rte2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj" />
-    <ProjectReference Include="..\Rte2023Ddd.Domain\Oracle2023Ddd.Domain.csproj" />
+    <ProjectReference Include="..\Oracle2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj" />
+    <ProjectReference Include="..\Oracle2023Ddd.Domain\Oracle2023Ddd.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

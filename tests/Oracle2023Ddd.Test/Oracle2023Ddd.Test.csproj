@@ -35,11 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Rte2023Ddd.Application\Oracle2023Ddd.Application.csproj" />
-    <ProjectReference Include="..\..\src\Rte2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj" />
-    <ProjectReference Include="..\..\src\Rte2023Ddd.Domain\Oracle2023Ddd.Domain.csproj" />
-    <ProjectReference Include="..\..\src\Rte2023Ddd.Infra.Data\Oracle2023Ddd.Infra.Data.csproj" />
-    <ProjectReference Include="..\..\src\Rte2023Ddd.Services.Api\Oracle2023Ddd.Services.Api.csproj" />
+    <ProjectReference Include="..\..\src\Oracle2023Ddd.Application\Oracle2023Ddd.Application.csproj" />
+    <ProjectReference Include="..\..\src\Oracle2023Ddd.Domain.Core\Oracle2023Ddd.Domain.Core.csproj" />
+    <ProjectReference Include="..\..\src\Oracle2023Ddd.Domain\Oracle2023Ddd.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Oracle2023Ddd.Infra.Data\Oracle2023Ddd.Infra.Data.csproj" />
+    <ProjectReference Include="..\..\src\Oracle2023Ddd.Services.Api\Oracle2023Ddd.Services.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>
